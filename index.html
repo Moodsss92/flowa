@@ -1541,6 +1541,9 @@
       }
     }
   </style>
+
+  <!-- Supabase JS client -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
@@ -1933,12 +1936,9 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <!-- ⚠️ REMPLACE CETTE CLÉ par la tienne depuis https://web3forms.com (gratuit, illimité) -->
-        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
-        <input type="hidden" name="subject" value="Nouveau message depuis Flowa">
-        <input type="hidden" name="from_name" value="Flowa Website">
-        <input type="checkbox" name="botcheck" class="hp-field" tabindex="-1" autocomplete="off">
+      <form class="contact-form" id="contactForm" novalidate>
+        <!-- Honeypot anti-spam (invisible pour humains) -->
+        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
 
         <h3>Demandez votre audit gratuit</h3>
         <p>On revient vers vous sous 24h</p>
@@ -2072,10 +2072,23 @@
       });
     });
 
-    // ── Contact form submission (Web3Forms)
-    const contactForm = document.getElementById('contactForm');
-    const formFeedback = document.getElementById('formFeedback');
-    const formSubmitBtn = document.getElementById('formSubmit');
+    // ── Contact form submission (Supabase)
+    // ⚠️ REMPLACE ces 2 valeurs par les tiennes (Supabase Dashboard → Settings → API)
+    const SUPABASE_URL      = 'YOUR_SUPABASE_URL';
+    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+
+    const supabaseConfigured =
+      SUPABASE_URL !== 'YOUR_SUPABASE_URL' &&
+      SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY' &&
+      typeof window.supabase !== 'undefined';
+
+    const sb = supabaseConfigured
+      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
+      : null;
+
+    const contactForm    = document.getElementById('contactForm');
+    const formFeedback   = document.getElementById('formFeedback');
+    const formSubmitBtn  = document.getElementById('formSubmit');
 
     if (contactForm) {
       contactForm.addEventListener('submit', async function(e) {
@@ -2083,10 +2096,37 @@
         formFeedback.className = 'form-feedback';
         formFeedback.textContent = '';
 
-        const accessKey = contactForm.querySelector('input[name="access_key"]').value;
-        if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        // Honeypot : si rempli → bot, on fait semblant d'avoir réussi
+        if (contactForm.querySelector('input[name="website"]').value.trim() !== '') {
+          formFeedback.className = 'form-feedback success';
+          formFeedback.textContent = '✓ Merci !';
+          contactForm.reset();
+          return;
+        }
+
+        // Validation basique
+        const payload = {
+          first_name: document.getElementById('fname').value.trim(),
+          last_name:  document.getElementById('lname').value.trim(),
+          email:      document.getElementById('email').value.trim(),
+          service:    document.getElementById('service').value,
+          message:    document.getElementById('message').value.trim(),
+        };
+
+        if (!payload.first_name || !payload.last_name || !payload.email || !payload.message) {
           formFeedback.className = 'form-feedback error';
-          formFeedback.textContent = '⚠️ Formulaire non configuré. Récupère ta clé sur web3forms.com et remplace-la dans le code.';
+          formFeedback.textContent = '✗ Merci de remplir tous les champs obligatoires.';
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
+          formFeedback.className = 'form-feedback error';
+          formFeedback.textContent = '✗ Adresse email invalide.';
+          return;
+        }
+
+        if (!supabaseConfigured) {
+          formFeedback.className = 'form-feedback error';
+          formFeedback.textContent = '⚠️ Formulaire non configuré. Ajoute ton URL et ta clé Supabase dans le code.';
           return;
         }
 
@@ -2095,21 +2135,14 @@
         formSubmitBtn.textContent = 'Envoi en cours…';
 
         try {
-          const formData = new FormData(contactForm);
-          const res = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            body: formData
-          });
-          const data = await res.json();
+          const { error } = await sb.from('leads').insert([payload]);
+          if (error) throw error;
 
-          if (data.success) {
-            formFeedback.className = 'form-feedback success';
-            formFeedback.textContent = '✓ Merci ! Votre message a bien été envoyé. On revient vers vous sous 24h.';
-            contactForm.reset();
-          } else {
-            throw new Error(data.message || 'Erreur inconnue');
-          }
+          formFeedback.className = 'form-feedback success';
+          formFeedback.textContent = '✓ Merci ! Votre demande a bien été envoyée. On revient vers vous sous 24h.';
+          contactForm.reset();
         } catch (err) {
+          console.error('[Flowa] Supabase insert error:', err);
           formFeedback.className = 'form-feedback error';
           formFeedback.textContent = '✗ Une erreur est survenue. Réessayez ou écrivez-nous à contact@flowa-agency.com';
         } finally {
