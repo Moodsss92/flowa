@@ -1711,6 +1711,8 @@
 
   <!-- Supabase JS client -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
@@ -2468,6 +2470,19 @@
           message:    `Service: ${funnel.data.service} | Budget: ${funnel.data.budget}`,
         }]);
         if (error) throw error;
+
+        // Notif email via EmailJS (fire & forget — on n'attend pas la réponse)
+        try {
+          emailjs.send('service_0itl689', 'template_8da5ipm', {
+            name:    name,
+            email:   email,
+            phone:   phone || 'Non renseigné',
+            service: funnel.data.service,
+            budget:  funnel.data.budget,
+          }, 'iyhod4iukdkaCdkyc');
+        } catch (emailErr) {
+          console.warn('[Flowa] EmailJS error (non-blocking):', emailErr);
+        }
 
         funnel.showSuccess();
       } catch (err) {
