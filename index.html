@@ -1562,7 +1562,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="YOUR_CALCOM_USERNAME/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
+      <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="agency-flowa/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
 
       <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span>
@@ -1577,7 +1577,7 @@
       <a href="#resultats">Cas d'usage</a>
       <a href="#apropos">À propos</a>
       <a href="#contact">Contact</a>
-      <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="YOUR_CALCOM_USERNAME/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
+      <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="agency-flowa/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
     </div>
   </nav>
 
@@ -1597,7 +1597,7 @@
       </p>
 
       <div class="hero-actions">
-        <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="YOUR_CALCOM_USERNAME/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
+        <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="agency-flowa/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
         <a href="#resultats" class="btn-secondary">
           Audit gratuit
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -2153,9 +2153,9 @@
     }
 
     // ── Cal.com booking popup
-    // ⚠️ REMPLACE "YOUR_CALCOM_USERNAME/30min" par ton lien (ex: "moad-flowa/30min")
+    // ⚠️ REMPLACE "agency-flowa/30min" par ton lien (ex: "moad-flowa/30min")
     // Tant que ce n'est pas remplacé, les boutons "Prendre un rendez-vous" font juste défiler vers le formulaire de contact.
-    const calLinkPlaceholder = 'YOUR_CALCOM_USERNAME/30min';
+    const calLinkPlaceholder = 'agency-flowa/30min';
     const calButtons = document.querySelectorAll('[data-cal-link]');
     const calConfigured = calButtons.length > 0 && calButtons[0].getAttribute('data-cal-link') !== calLinkPlaceholder;
 
