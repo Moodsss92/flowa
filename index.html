@@ -1216,45 +1216,137 @@
       fill: var(--violet);
     }
 
-    .contact-form {
+    /* ─── FUNNEL MULTI-ÉTAPES ───────────────────────── */
+    .funnel {
       background: var(--white);
       border-radius: 24px;
       padding: 44px;
       border: 1px solid rgba(0,0,0,0.04);
       opacity: 0;
       transform: translateY(40px);
+      max-width: 520px;
+      width: 100%;
     }
 
-    .contact-form.visible {
+    .funnel.visible {
       opacity: 1;
       transform: translateY(0);
       transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s, opacity 0.8s ease 0.12s;
     }
 
-    .contact-form h3 {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 8px;
-    }
-
-    .contact-form > p {
-      font-size: 14px;
-      color: #999;
+    .funnel-progress {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       margin-bottom: 32px;
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .funnel-progress-step {
+      flex: 1;
+      height: 4px;
+      border-radius: 4px;
+      background: rgba(0,0,0,0.06);
+      transition: background 0.4s ease;
     }
 
-    .form-group {
+    .funnel-progress-step.active {
+      background: var(--violet);
+    }
+
+    .funnel-progress-step.done {
+      background: var(--violet);
+    }
+
+    .funnel-step {
+      display: none;
+      animation: fadeUp 0.4s ease;
+    }
+
+    .funnel-step.active {
+      display: block;
+    }
+
+    .funnel-step h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .funnel-step > p {
+      font-size: 14px;
+      color: #999;
+      margin-bottom: 28px;
+    }
+
+    /* Option cards (services + budget) */
+    .funnel-options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .funnel-option {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 14px;
+      cursor: pointer;
+      transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
+      background: var(--white);
+    }
+
+    .funnel-option:hover {
+      border-color: rgba(123, 47, 190, 0.3);
+      background: rgba(123, 47, 190, 0.02);
+    }
+
+    .funnel-option.selected {
+      border-color: var(--violet);
+      background: rgba(123, 47, 190, 0.05);
+    }
+
+    .funnel-option-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 10px;
+      background: rgba(123, 47, 190, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .funnel-option-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--violet);
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .funnel-option-text {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .funnel-option-desc {
+      font-size: 12.5px;
+      color: #999;
+      margin-top: 2px;
+      font-weight: 400;
+    }
+
+    /* Identity step inputs */
+    .funnel-group {
       margin-bottom: 16px;
     }
 
-    .form-group label {
+    .funnel-group label {
       display: block;
       font-size: 13px;
       font-weight: 600;
@@ -1262,9 +1354,7 @@
       margin-bottom: 8px;
     }
 
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
+    .funnel-group input {
       width: 100%;
       padding: 14px 18px;
       border: 1.5px solid rgba(0,0,0,0.08);
@@ -1278,81 +1368,131 @@
       -webkit-appearance: none;
     }
 
-    .form-group input::placeholder,
-    .form-group textarea::placeholder {
+    .funnel-group input::placeholder {
       color: #bbb;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
+    .funnel-group input:focus {
       border-color: var(--violet);
       box-shadow: 0 0 0 3px rgba(123, 47, 190, 0.1);
     }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 120px;
+    /* Navigation buttons */
+    .funnel-nav {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
     }
 
-    .form-group select {
+    .funnel-back {
+      padding: 14px 24px;
+      background: transparent;
+      color: var(--grey);
+      font-size: 14px;
+      font-weight: 600;
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 12px;
       cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.3s ease, background 0.3s ease;
     }
 
-    .form-submit {
-      width: 100%;
-      padding: 16px;
+    .funnel-back:hover {
+      border-color: rgba(0,0,0,0.15);
+      background: var(--offwhite);
+    }
+
+    .funnel-next,
+    .funnel-submit {
+      flex: 1;
+      padding: 14px 24px;
       background: var(--violet);
       color: #fff;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
       border: none;
-      border-radius: 14px;
+      border-radius: 12px;
       cursor: pointer;
       font-family: inherit;
       transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 16px rgba(123, 47, 190, 0.25);
-      margin-top: 8px;
     }
 
-    .form-submit:hover {
+    .funnel-next:hover,
+    .funnel-submit:hover {
       background: #6422a8;
       transform: translateY(-1px);
       box-shadow: 0 6px 22px rgba(123, 47, 190, 0.35);
     }
 
-    .form-submit:active {
-      transform: translateY(0);
-    }
-
-    .form-submit:disabled {
-      opacity: 0.6;
+    .funnel-next:disabled,
+    .funnel-submit:disabled {
+      opacity: 0.5;
       cursor: not-allowed;
       transform: none;
     }
 
-    .form-feedback {
-      margin-top: 16px;
-      padding: 14px 18px;
-      border-radius: 12px;
+    /* Success screen */
+    .funnel-success {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+      animation: fadeUp 0.5s ease;
+    }
+
+    .funnel-success.active {
+      display: block;
+    }
+
+    .funnel-success-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .funnel-success-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: #22c55e;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .funnel-success h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    .funnel-success p {
       font-size: 14px;
+      color: #999;
+      line-height: 1.6;
+    }
+
+    .funnel-error {
+      margin-top: 12px;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 13px;
       font-weight: 500;
       display: none;
-      animation: fadeUp 0.4s ease;
-    }
-
-    .form-feedback.success {
-      display: block;
-      background: rgba(34, 197, 94, 0.08);
-      color: #15803d;
-      border: 1px solid rgba(34, 197, 94, 0.2);
-    }
-
-    .form-feedback.error {
-      display: block;
       background: rgba(239, 68, 68, 0.08);
       color: #b91c1c;
       border: 1px solid rgba(239, 68, 68, 0.2);
+      animation: fadeUp 0.3s ease;
+    }
+
+    .funnel-error.show {
+      display: block;
     }
 
     /* Honeypot hidden */
@@ -1562,7 +1702,7 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
 
-      <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="agency-flowa/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
+      <a href="#contact" class="cta-btn">Lancer mon projet</a>
 
       <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
         <span></span>
@@ -1577,7 +1717,7 @@
       <a href="#resultats">Cas d'usage</a>
       <a href="#apropos">À propos</a>
       <a href="#contact">Contact</a>
-      <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="agency-flowa/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
+      <a href="#contact" class="cta-btn">Lancer mon projet</a>
     </div>
   </nav>
 
@@ -1597,9 +1737,9 @@
       </p>
 
       <div class="hero-actions">
-        <a href="#contact" class="cta-btn" data-cal-namespace="rdv" data-cal-link="agency-flowa/30min" data-cal-config='{"layout":"month_view"}'>Prendre un rendez-vous</a>
+        <a href="#contact" class="cta-btn">Lancer mon projet</a>
         <a href="#resultats" class="btn-secondary">
-          Audit gratuit
+          Nos réalisations
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3.5 8h9M8.5 4l4 4-4 4"/>
           </svg>
@@ -1882,15 +2022,15 @@
     </div>
   </section>
 
-  <!-- ═══ CONTACT ═══ -->
+  <!-- ═══ LANCER MON PROJET ═══ -->
   <section class="contact" id="contact">
     <div class="contact-inner">
 
       <div class="contact-left">
-        <div class="section-label">Contact</div>
-        <h2 class="section-heading">Prêt à automatiser<br>votre business ?</h2>
+        <div class="section-label">Lancer mon projet</div>
+        <h2 class="section-heading">Parlez-nous de<br>votre projet</h2>
         <p class="section-desc">
-          Réservez un appel gratuit de 30 minutes. On analyse votre situation et on vous propose un plan d'action concret.
+          Répondez à 3 questions rapides pour qu'on comprenne votre besoin. On revient vers vous sous 24h avec un plan d'action concret.
         </p>
 
         <div class="contact-details">
@@ -1901,15 +2041,6 @@
             <div class="contact-item-text">
               <span>Email</span>
               <a href="mailto:contact@flowa-agency.com">contact@flowa-agency.com</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <div class="contact-item-text">
-              <span>Téléphone</span>
-              <a href="tel:+32470000000">+32 470 00 00 00</a>
             </div>
           </div>
           <div class="contact-item">
@@ -1936,51 +2067,166 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm" novalidate>
-        <!-- Honeypot anti-spam (invisible pour humains) -->
-        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <!-- ── Funnel multi-étapes ── -->
+      <div class="funnel" id="funnel">
+        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" id="hpField">
 
-        <h3>Demandez votre audit gratuit</h3>
-        <p>On revient vers vous sous 24h</p>
+        <!-- Progress bar -->
+        <div class="funnel-progress">
+          <div class="funnel-progress-step active" data-step="1"></div>
+          <div class="funnel-progress-step" data-step="2"></div>
+          <div class="funnel-progress-step" data-step="3"></div>
+        </div>
 
-        <div class="form-row">
-          <div class="form-group">
-            <label for="fname">Prénom</label>
-            <input type="text" id="fname" name="first_name" placeholder="John" required>
+        <!-- ÉTAPE 1 — Service -->
+        <div class="funnel-step active" id="funnelStep1">
+          <h3>Quel est votre besoin ?</h3>
+          <p>Sélectionnez le service qui vous intéresse</p>
+          <div class="funnel-options" id="serviceOptions">
+            <div class="funnel-option" data-value="Création de landing page">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">Landing page sur-mesure</div>
+                <div class="funnel-option-desc">Page de vente optimisée pour la conversion</div>
+              </div>
+            </div>
+            <div class="funnel-option" data-value="Refonte & optimisation de site">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">Refonte & optimisation</div>
+                <div class="funnel-option-desc">Moderniser votre site existant</div>
+              </div>
+            </div>
+            <div class="funnel-option" data-value="Automatisation des tâches">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">Automatisation des tâches</div>
+                <div class="funnel-option-desc">Emails, relances, notifications auto</div>
+              </div>
+            </div>
+            <div class="funnel-option" data-value="Centralisation des outils">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">Centralisation des outils</div>
+                <div class="funnel-option-desc">n8n, Make, Zapier, Notion — tout connecté</div>
+              </div>
+            </div>
+            <div class="funnel-option" data-value="IA & Chatbots">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">IA & Chatbots</div>
+                <div class="funnel-option-desc">Chatbot intelligent pour vos prospects</div>
+              </div>
+            </div>
+            <div class="funnel-option" data-value="Autre / Je ne sais pas encore">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">Autre / Je ne sais pas encore</div>
+                <div class="funnel-option-desc">On en discute ensemble</div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="lname">Nom</label>
-            <input type="text" id="lname" name="last_name" placeholder="Doe" required>
+          <div class="funnel-nav">
+            <button class="funnel-next" id="toStep2" disabled>Continuer →</button>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="john@exemple.com" required>
+        <!-- ÉTAPE 2 — Budget -->
+        <div class="funnel-step" id="funnelStep2">
+          <h3>Quel est votre budget ?</h3>
+          <p>Donnez-nous une idée pour adapter notre proposition</p>
+          <div class="funnel-options" id="budgetOptions">
+            <div class="funnel-option" data-value="< 500€">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">Moins de 500€</div>
+                <div class="funnel-option-desc">Projet simple, résultat rapide</div>
+              </div>
+            </div>
+            <div class="funnel-option" data-value="500€ - 1 500€">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">500€ — 1 500€</div>
+                <div class="funnel-option-desc">Landing page + automatisations de base</div>
+              </div>
+            </div>
+            <div class="funnel-option" data-value="1 500€ - 5 000€">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">1 500€ — 5 000€</div>
+                <div class="funnel-option-desc">Système complet sur-mesure</div>
+              </div>
+            </div>
+            <div class="funnel-option" data-value="Pas encore défini">
+              <div class="funnel-option-icon">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <div>
+                <div class="funnel-option-text">Pas encore défini</div>
+                <div class="funnel-option-desc">Je veux d'abord un devis</div>
+              </div>
+            </div>
+          </div>
+          <div class="funnel-nav">
+            <button class="funnel-back" id="backStep1">← Retour</button>
+            <button class="funnel-next" id="toStep3" disabled>Continuer →</button>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="service">Besoin principal</label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Choisir une solution</option>
-            <option>Création de landing page</option>
-            <option>Refonte & optimisation de site</option>
-            <option>Automatisation des tâches</option>
-            <option>Centralisation des outils (n8n / Make / Zapier)</option>
-            <option>IA & Chatbots</option>
-            <option>Systèmes no-code</option>
-            <option>Autre / Je ne sais pas encore</option>
-          </select>
+        <!-- ÉTAPE 3 — Identité -->
+        <div class="funnel-step" id="funnelStep3">
+          <h3>Vos coordonnées</h3>
+          <p>Pour qu'on puisse vous recontacter</p>
+
+          <div class="funnel-group">
+            <label for="funnelName">Nom complet</label>
+            <input type="text" id="funnelName" placeholder="John Doe" required>
+          </div>
+
+          <div class="funnel-group">
+            <label for="funnelEmail">Email</label>
+            <input type="email" id="funnelEmail" placeholder="john@exemple.com" required>
+          </div>
+
+          <div class="funnel-group">
+            <label for="funnelPhone">Téléphone (optionnel)</label>
+            <input type="tel" id="funnelPhone" placeholder="+32 470 00 00 00">
+          </div>
+
+          <div class="funnel-error" id="funnelError"></div>
+          <div class="funnel-nav">
+            <button class="funnel-back" id="backStep2">← Retour</button>
+            <button class="funnel-submit" id="funnelSubmit">Envoyer ma demande</button>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="message">Décrivez votre projet</label>
-          <textarea id="message" name="message" placeholder="Parlez-nous de votre activité et de votre besoin…" required></textarea>
+        <!-- Écran de succès -->
+        <div class="funnel-success" id="funnelSuccess">
+          <div class="funnel-success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3>Demande envoyée !</h3>
+          <p>Merci pour votre confiance. On analyse votre projet et on revient vers vous sous 24h.</p>
         </div>
-
-        <button type="submit" class="form-submit" id="formSubmit">Envoyer ma demande</button>
-        <div class="form-feedback" id="formFeedback"></div>
-      </form>
+      </div>
 
     </div>
   </section>
@@ -2055,15 +2301,13 @@
       observer.observe(card);
     });
 
-    document.querySelectorAll('.about-visual, .about-content, .contact-left, .contact-form').forEach(el => {
+    document.querySelectorAll('.about-visual, .about-content, .contact-left, .funnel').forEach(el => {
       observer.observe(el);
     });
 
     // ── Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
-        // Skip if it's a Cal.com booking link
-        if (this.hasAttribute('data-cal-link')) return;
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -2072,8 +2316,7 @@
       });
     });
 
-    // ── Contact form submission (Supabase)
-    // ⚠️ REMPLACE ces 2 valeurs par les tiennes (Supabase Dashboard → Settings → API)
+    // ── Supabase client
     const SUPABASE_URL      = 'https://oixsfogsntqexddjtkae.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_r6Htu6EQriJcxYd82wWmZg_0s37ieHv';
 
@@ -2086,90 +2329,127 @@
       ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
       : null;
 
-    const contactForm    = document.getElementById('contactForm');
-    const formFeedback   = document.getElementById('formFeedback');
-    const formSubmitBtn  = document.getElementById('formSubmit');
+    // ── Funnel multi-étapes
+    const funnel = {
+      currentStep: 1,
+      data: { service: '', budget: '', full_name: '', email: '', phone: '' },
 
-    if (contactForm) {
-      contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        formFeedback.className = 'form-feedback';
-        formFeedback.textContent = '';
+      steps: [null, document.getElementById('funnelStep1'), document.getElementById('funnelStep2'), document.getElementById('funnelStep3')],
+      progressBars: document.querySelectorAll('.funnel-progress-step'),
+      successEl: document.getElementById('funnelSuccess'),
+      errorEl: document.getElementById('funnelError'),
 
-        // Honeypot : si rempli → bot, on fait semblant d'avoir réussi
-        if (contactForm.querySelector('input[name="website"]').value.trim() !== '') {
-          formFeedback.className = 'form-feedback success';
-          formFeedback.textContent = '✓ Merci !';
-          contactForm.reset();
-          return;
-        }
+      goTo(step) {
+        // Hide all steps
+        this.steps.forEach((el, i) => { if (el) el.classList.remove('active'); });
+        this.successEl.classList.remove('active');
 
-        // Validation basique
-        const payload = {
-          first_name: document.getElementById('fname').value.trim(),
-          last_name:  document.getElementById('lname').value.trim(),
-          email:      document.getElementById('email').value.trim(),
-          service:    document.getElementById('service').value,
-          message:    document.getElementById('message').value.trim(),
-        };
+        // Show target step
+        this.currentStep = step;
+        if (this.steps[step]) this.steps[step].classList.add('active');
 
-        if (!payload.first_name || !payload.last_name || !payload.email || !payload.message) {
-          formFeedback.className = 'form-feedback error';
-          formFeedback.textContent = '✗ Merci de remplir tous les champs obligatoires.';
-          return;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email)) {
-          formFeedback.className = 'form-feedback error';
-          formFeedback.textContent = '✗ Adresse email invalide.';
-          return;
-        }
+        // Update progress
+        this.progressBars.forEach((bar, i) => {
+          bar.classList.remove('active', 'done');
+          if (i + 1 < step) bar.classList.add('done');
+          if (i + 1 === step) bar.classList.add('active');
+        });
+      },
 
-        if (!supabaseConfigured) {
-          formFeedback.className = 'form-feedback error';
-          formFeedback.textContent = '⚠️ Formulaire non configuré. Ajoute ton URL et ta clé Supabase dans le code.';
-          return;
-        }
+      showSuccess() {
+        this.steps.forEach((el) => { if (el) el.classList.remove('active'); });
+        this.progressBars.forEach(bar => bar.classList.add('done'));
+        this.successEl.classList.add('active');
+      },
 
-        formSubmitBtn.disabled = true;
-        const originalText = formSubmitBtn.textContent;
-        formSubmitBtn.textContent = 'Envoi en cours…';
+      showError(msg) {
+        this.errorEl.textContent = msg;
+        this.errorEl.classList.add('show');
+        setTimeout(() => this.errorEl.classList.remove('show'), 5000);
+      }
+    };
 
-        try {
-          const { error } = await sb.from('leads').insert([payload]);
-          if (error) throw error;
+    // ── Option selection (service & budget)
+    function setupOptionGroup(containerId, dataKey, nextBtnId) {
+      const container = document.getElementById(containerId);
+      const nextBtn = document.getElementById(nextBtnId);
+      if (!container || !nextBtn) return;
 
-          formFeedback.className = 'form-feedback success';
-          formFeedback.textContent = '✓ Merci ! Votre demande a bien été envoyée. On revient vers vous sous 24h.';
-          contactForm.reset();
-        } catch (err) {
-          console.error('[Flowa] Supabase insert error:', err);
-          formFeedback.className = 'form-feedback error';
-          formFeedback.textContent = '✗ Une erreur est survenue. Réessayez ou écrivez-nous à contact@flowa-agency.com';
-        } finally {
-          formSubmitBtn.disabled = false;
-          formSubmitBtn.textContent = originalText;
-        }
+      container.querySelectorAll('.funnel-option').forEach(option => {
+        option.addEventListener('click', () => {
+          container.querySelectorAll('.funnel-option').forEach(o => o.classList.remove('selected'));
+          option.classList.add('selected');
+          funnel.data[dataKey] = option.dataset.value;
+          nextBtn.disabled = false;
+        });
       });
     }
 
-    // ── Cal.com booking popup
-    // ⚠️ REMPLACE "agency-flowa/30min" par ton lien (ex: "moad-flowa/30min")
-    // Tant que ce n'est pas remplacé, les boutons "Prendre un rendez-vous" font juste défiler vers le formulaire de contact.
-    const calButtons = document.querySelectorAll('[data-cal-link]');
-    const calConfigured = calButtons.length > 0 && !calButtons[0].getAttribute('data-cal-link').includes('YOUR_CALCOM_USERNAME');
+    setupOptionGroup('serviceOptions', 'service', 'toStep2');
+    setupOptionGroup('budgetOptions', 'budget', 'toStep3');
 
-    if (calConfigured) {
-      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-      Cal("init", "rdv", {origin:"https://cal.com"});
-      Cal.ns.rdv("ui", {"theme":"light","cssVarsPerTheme":{"light":{"cal-brand":"#7B2FBE"}},"hideEventTypeDetails":false,"layout":"month_view"});
-    } else {
-      // Fallback : retire les attributs Cal pour que le lien scrolle simplement vers #contact
-      calButtons.forEach(btn => {
-        btn.removeAttribute('data-cal-namespace');
-        btn.removeAttribute('data-cal-link');
-        btn.removeAttribute('data-cal-config');
-      });
-    }
+    // ── Navigation buttons
+    document.getElementById('toStep2')?.addEventListener('click', () => funnel.goTo(2));
+    document.getElementById('toStep3')?.addEventListener('click', () => funnel.goTo(3));
+    document.getElementById('backStep1')?.addEventListener('click', () => funnel.goTo(1));
+    document.getElementById('backStep2')?.addEventListener('click', () => funnel.goTo(2));
+
+    // ── Submit (step 3)
+    const submitBtn = document.getElementById('funnelSubmit');
+    submitBtn?.addEventListener('click', async () => {
+      const hp = document.getElementById('hpField');
+      if (hp && hp.value.trim() !== '') {
+        funnel.showSuccess();
+        return;
+      }
+
+      const name  = document.getElementById('funnelName').value.trim();
+      const email = document.getElementById('funnelEmail').value.trim();
+      const phone = document.getElementById('funnelPhone').value.trim();
+
+      if (!name || !email) {
+        funnel.showError('Merci de remplir votre nom et email.');
+        return;
+      }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        funnel.showError('Adresse email invalide.');
+        return;
+      }
+
+      if (!supabaseConfigured) {
+        funnel.showError('Formulaire non configuré. Contactez-nous à contact@flowa-agency.com');
+        return;
+      }
+
+      // Split name into first/last
+      const nameParts = name.split(' ');
+      const firstName = nameParts[0];
+      const lastName  = nameParts.slice(1).join(' ') || '-';
+
+      submitBtn.disabled = true;
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Envoi en cours…';
+
+      try {
+        const { error } = await sb.from('leads').insert([{
+          first_name: firstName,
+          last_name:  lastName,
+          email:      email,
+          phone:      phone || null,
+          service:    funnel.data.service,
+          budget:     funnel.data.budget,
+          message:    `Service: ${funnel.data.service} | Budget: ${funnel.data.budget}`,
+        }]);
+        if (error) throw error;
+
+        funnel.showSuccess();
+      } catch (err) {
+        console.error('[Flowa] Supabase insert error:', err);
+        funnel.showError('Une erreur est survenue. Réessayez ou écrivez-nous à contact@flowa-agency.com');
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
+    });
   </script>
 
 </body>

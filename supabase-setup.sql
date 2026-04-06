@@ -53,6 +53,10 @@ create policy "authenticated can update leads"
   using (true)
   with check (true);
 
+-- 4. Colonnes supplémentaires pour le funnel multi-étapes
+alter table public.leads add column if not exists phone  text;
+alter table public.leads add column if not exists budget text;
+
 -- ════════════════════════════════════════════════════════════════
 -- ✅ Terminé. Ta table est prête.
 -- Va maintenant dans Settings → API pour récupérer :
