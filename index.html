@@ -933,183 +933,114 @@
       font-weight: 500;
     }
 
-    /* ─── À PROPOS ────────────────────────────────────── */
+    /* ─── NOTRE MÉTHODE ──────────────────────────────── */
     .about {
       padding: 120px 32px;
-      background: var(--white);
+      background: var(--offwhite);
     }
 
     .about-inner {
       max-width: 1200px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .about-visual {
-      position: relative;
-      aspect-ratio: 1;
-      max-width: 480px;
-      opacity: 0;
-      transform: translateX(-40px);
-    }
-
-    .about-visual.visible {
-      opacity: 1;
-      transform: translateX(0);
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
-    }
-
-    .about-img {
-      width: 100%;
-      height: 100%;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #0f3460 100%);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .about-img::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 30% 40%, rgba(123, 47, 190, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 70% 60%, rgba(168, 85, 247, 0.2) 0%, transparent 50%);
-    }
-
-    .about-grid {
-      position: absolute;
-      inset: 40px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .about-block {
-      border-radius: 12px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .about-block:nth-child(1) { border-radius: 12px 12px 12px 40px; }
-    .about-block:nth-child(2) { background: rgba(123, 47, 190, 0.2); border-color: rgba(123,47,190,0.3); }
-    .about-block:nth-child(3) { background: rgba(168, 85, 247, 0.15); }
-    .about-block:nth-child(4) { border-radius: 12px 12px 40px 12px; }
-
-    .about-visual:hover .about-block:nth-child(1) { transform: translate(-4px, -4px); }
-    .about-visual:hover .about-block:nth-child(2) { transform: translate(4px, -4px); }
-    .about-visual:hover .about-block:nth-child(3) { transform: translate(-4px, 4px); }
-    .about-visual:hover .about-block:nth-child(4) { transform: translate(4px, 4px); }
-
-    .about-float {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      background: var(--white);
-      border-radius: 16px;
-      padding: 20px 24px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      z-index: 2;
-    }
-
-    .about-float-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: rgba(123, 47, 190, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .about-float-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--violet);
-      stroke-width: 2;
-      fill: none;
-    }
-
-    .about-float strong {
-      display: block;
-      font-size: 18px;
-      font-weight: 800;
-      color: var(--black);
-    }
-
-    .about-float span {
-      font-size: 12.5px;
-      color: #999;
-      font-weight: 500;
+      text-align: center;
     }
 
     .about-content {
       opacity: 0;
-      transform: translateX(40px);
+      transform: translateY(30px);
     }
 
     .about-content.visible {
       opacity: 1;
-      transform: translateX(0);
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, opacity 0.8s ease 0.15s;
+      transform: translateY(0);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
     }
 
-    .about-content .section-label { justify-content: flex-start; }
-    .about-content .section-heading { text-align: left; }
-    .about-content .section-desc { margin-bottom: 36px; text-align: left; margin-left: 0; }
-
-    .about-values {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      margin-bottom: 40px;
+    .methode-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+      text-align: center;
     }
 
-    .about-val {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
+    .methode-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px 28px 36px;
+      border: 1px solid rgba(0,0,0,0.04);
+      position: relative;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .about-val-icon {
+    .methode-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                  opacity 0.7s ease;
+    }
+
+    .methode-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+    }
+
+    .methode-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       width: 40px;
       height: 40px;
-      border-radius: 10px;
+      border-radius: 50%;
+      background: rgba(123, 47, 190, 0.08);
+      color: var(--violet);
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .methode-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
       background: rgba(123, 47, 190, 0.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
-      margin-top: 2px;
+      margin: 0 auto 20px;
     }
 
-    .about-val-icon svg {
-      width: 18px;
-      height: 18px;
+    .methode-icon svg {
+      width: 24px;
+      height: 24px;
       stroke: var(--violet);
-      stroke-width: 2;
       fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
-    .about-val h4 {
-      font-size: 15.5px;
+    .methode-card h4 {
+      font-size: 18px;
       font-weight: 700;
       color: var(--black);
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
-    .about-val p {
+    .methode-card p {
       font-size: 14px;
-      color: #888;
-      line-height: 1.55;
+      color: #777;
+      line-height: 1.6;
     }
+
+    /* Connector line between cards */
+    .methode-connector {
+      display: none;
+    }
+
+    /* Responsive méthode */
 
     /* ─── CONTACT ─────────────────────────────────────── */
     .contact {
@@ -1668,13 +1599,9 @@
         padding: 80px 24px;
       }
 
-      .about-inner {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .about-visual {
-        max-width: 100%;
+      .methode-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
       }
 
       .contact {
@@ -1717,6 +1644,10 @@
       .hero-metrics {
         flex-direction: column;
         gap: 24px;
+      }
+
+      .methode-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -2000,73 +1931,54 @@
     </div>
   </section>
 
-  <!-- ═══ À PROPOS ═══ -->
+  <!-- ═══ NOTRE MÉTHODE ═══ -->
   <section class="about" id="apropos">
     <div class="about-inner">
 
-      <div class="about-visual">
-        <div class="about-img">
-          <div class="about-grid">
-            <div class="about-block"></div>
-            <div class="about-block"></div>
-            <div class="about-block"></div>
-            <div class="about-block"></div>
-          </div>
-        </div>
-        <div class="about-float">
-          <div class="about-float-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <div>
-            <strong>100%</strong>
-            <span>Sur-mesure</span>
-          </div>
-        </div>
-      </div>
-
       <div class="about-content">
-        <div class="section-label">À propos</div>
-        <h2 class="section-heading">Landing pages & automatisation<br>au service de votre business</h2>
+        <div class="section-label">Notre méthode</div>
+        <h2 class="section-heading">Nous nous déplaçons partout<br>à Bruxelles pour échanger sur<br>votre stratégie autour d'un café</h2>
         <p class="section-desc">
-          Flowa est né d'un constat simple : beaucoup d'entrepreneurs perdent du temps sur des tâches répétitives et n'ont pas de présence web qui convertit. Notre mission : créer des landing pages qui convertissent et automatiser vos processus pour vous faire gagner du temps.
+          Un processus simple et humain en 4 étapes pour transformer votre idée en résultat concret.
         </p>
 
-        <div class="about-values">
-          <div class="about-val">
-            <div class="about-val-icon">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div class="methode-grid">
+          <div class="methode-card">
+            <div class="methode-number">1</div>
+            <div class="methode-icon">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </div>
-            <div>
-              <h4>Résultats rapides</h4>
-              <p>Des automatisations opérationnelles en quelques jours, pas des mois. Impact immédiat sur votre productivité.</p>
-            </div>
+            <h4>Analyse</h4>
+            <p>Immersion dans votre projet pour définir une stratégie sur mesure.</p>
           </div>
-          <div class="about-val">
-            <div class="about-val-icon">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+
+          <div class="methode-card">
+            <div class="methode-number">2</div>
+            <div class="methode-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
             </div>
-            <div>
-              <h4>Solutions fiables</h4>
-              <p>Des systèmes robustes et testés. Une fois en place, ça tourne sans vous. Garanti.</p>
-            </div>
+            <h4>Design</h4>
+            <p>Conception d'une interface esthétique et d'un parcours utilisateur optimisé.</p>
           </div>
-          <div class="about-val">
-            <div class="about-val-icon">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+
+          <div class="methode-card">
+            <div class="methode-number">3</div>
+            <div class="methode-icon">
+              <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
-            <div>
-              <h4>Accompagnement humain</h4>
-              <p>Pas de jargon technique. On vous explique tout et on vous accompagne à chaque étape.</p>
+            <h4>Développement</h4>
+            <p>Construction technique robuste utilisant les technologies les plus fiables.</p>
+          </div>
+
+          <div class="methode-card">
+            <div class="methode-number">4</div>
+            <div class="methode-icon">
+              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
+            <h4>Lancement</h4>
+            <p>Mise en ligne et accompagnement pour assurer votre réussite.</p>
           </div>
         </div>
-
-        <a href="#contact" class="btn-secondary">
-          Discuter de mon projet
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3.5 8h9M8.5 4l4 4-4 4"/>
-          </svg>
-        </a>
       </div>
 
     </div>
@@ -2351,7 +2263,12 @@
       observer.observe(card);
     });
 
-    document.querySelectorAll('.about-visual, .about-content, .contact-left, .funnel').forEach(el => {
+    document.querySelectorAll('.methode-card').forEach((card, i) => {
+      card.style.transitionDelay = `${i * 0.12}s`;
+      observer.observe(card);
+    });
+
+    document.querySelectorAll('.about-content, .contact-left, .funnel').forEach(el => {
       observer.observe(el);
     });
 
