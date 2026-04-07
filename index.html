@@ -956,65 +956,92 @@
       transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
     }
 
-    .methode-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 32px;
-      margin-top: 56px;
-      text-align: center;
-    }
-
-    .methode-card {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 40px 28px 36px;
-      border: 1px solid rgba(0,0,0,0.04);
+    /* ── Timeline méthode ── */
+    .methode-timeline {
+      display: flex;
+      justify-content: space-between;
       position: relative;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      margin-top: 64px;
+      padding: 0 20px;
     }
 
-    .methode-card.visible {
+    /* Ligne horizontale connectrice */
+    .methode-timeline::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: calc(12.5% + 10px);
+      right: calc(12.5% + 10px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--violet), rgba(123, 47, 190, 0.15));
+      z-index: 0;
+    }
+
+    .methode-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .methode-step.visible {
       opacity: 1;
       transform: translateY(0);
       transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
                   opacity 0.7s ease;
     }
 
-    .methode-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.06);
-    }
-
+    /* Cercle numéroté */
     .methode-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
+      width: 72px;
+      height: 72px;
       border-radius: 50%;
-      background: rgba(123, 47, 190, 0.08);
-      color: var(--violet);
-      font-size: 16px;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .methode-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: rgba(123, 47, 190, 0.08);
+      background: var(--white);
+      border: 2.5px solid var(--violet);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 20px;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--violet);
+      margin-bottom: 24px;
+      position: relative;
+      box-shadow: 0 8px 30px rgba(123, 47, 190, 0.12);
+      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .methode-step:hover .methode-number {
+      background: var(--violet);
+      color: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 12px 40px rgba(123, 47, 190, 0.3);
+    }
+
+    /* Icône sous le cercle */
+    .methode-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(123, 47, 190, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      transition: background 0.3s ease;
+    }
+
+    .methode-step:hover .methode-icon {
+      background: rgba(123, 47, 190, 0.12);
     }
 
     .methode-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 22px;
+      height: 22px;
       stroke: var(--violet);
       fill: none;
       stroke-width: 1.8;
@@ -1022,22 +1049,18 @@
       stroke-linejoin: round;
     }
 
-    .methode-card h4 {
+    .methode-step h4 {
       font-size: 18px;
       font-weight: 700;
       color: var(--black);
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
-    .methode-card p {
+    .methode-step p {
       font-size: 14px;
       color: #777;
       line-height: 1.6;
-    }
-
-    /* Connector line between cards */
-    .methode-connector {
-      display: none;
+      max-width: 220px;
     }
 
     /* Responsive méthode */
@@ -1599,9 +1622,14 @@
         padding: 80px 24px;
       }
 
-      .methode-grid {
+      .methode-timeline {
+        display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 20px;
+        gap: 48px 24px;
+      }
+
+      .methode-timeline::before {
+        display: none;
       }
 
       .contact {
@@ -1646,7 +1674,7 @@
         gap: 24px;
       }
 
-      .methode-grid {
+      .methode-timeline {
         grid-template-columns: 1fr;
       }
     }
@@ -1942,8 +1970,8 @@
           Nous nous déplaçons partout à Bruxelles pour échanger sur votre stratégie autour d'un café.
         </p>
 
-        <div class="methode-grid">
-          <div class="methode-card">
+        <div class="methode-timeline">
+          <div class="methode-step">
             <div class="methode-number">1</div>
             <div class="methode-icon">
               <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1952,7 +1980,7 @@
             <p>Immersion dans votre projet pour définir une stratégie sur mesure.</p>
           </div>
 
-          <div class="methode-card">
+          <div class="methode-step">
             <div class="methode-number">2</div>
             <div class="methode-icon">
               <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
@@ -1961,7 +1989,7 @@
             <p>Conception d'une interface esthétique et d'un parcours utilisateur optimisé.</p>
           </div>
 
-          <div class="methode-card">
+          <div class="methode-step">
             <div class="methode-number">3</div>
             <div class="methode-icon">
               <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
@@ -1970,7 +1998,7 @@
             <p>Construction technique robuste utilisant les technologies les plus fiables.</p>
           </div>
 
-          <div class="methode-card">
+          <div class="methode-step">
             <div class="methode-number">4</div>
             <div class="methode-icon">
               <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
@@ -2263,9 +2291,9 @@
       observer.observe(card);
     });
 
-    document.querySelectorAll('.methode-card').forEach((card, i) => {
-      card.style.transitionDelay = `${i * 0.12}s`;
-      observer.observe(card);
+    document.querySelectorAll('.methode-step').forEach((step, i) => {
+      step.style.transitionDelay = `${i * 0.15}s`;
+      observer.observe(step);
     });
 
     document.querySelectorAll('.about-content, .contact-left, .funnel').forEach(el => {
