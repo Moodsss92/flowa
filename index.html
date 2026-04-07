@@ -1049,6 +1049,10 @@
       stroke-linejoin: round;
     }
 
+    .methode-step {
+      cursor: pointer;
+    }
+
     .methode-step h4 {
       font-size: 18px;
       font-weight: 700;
@@ -2457,6 +2461,18 @@
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
       }
+    });
+
+    // ── Clic sur les étapes méthode → scroll vers le funnel (étape 1)
+    document.querySelectorAll('.methode-step').forEach(step => {
+      step.addEventListener('click', () => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+          contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        // Reset le funnel à l'étape 1 si l'utilisateur était déjà passé
+        funnel.goTo(1);
+      });
     });
   </script>
 
