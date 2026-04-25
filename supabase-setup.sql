@@ -53,9 +53,20 @@ create policy "authenticated can update leads"
   using (true)
   with check (true);
 
+-- Policy 4 : toi peux supprimer un lead depuis le dashboard admin
+drop policy if exists "authenticated can delete leads" on public.leads;
+create policy "authenticated can delete leads"
+  on public.leads
+  for delete
+  to authenticated
+  using (true);
+
 -- 4. Colonnes supplémentaires pour le funnel multi-étapes
 alter table public.leads add column if not exists phone  text;
 alter table public.leads add column if not exists budget text;
+
+-- 5. Activer Realtime sur la table leads (pour le dashboard live)
+alter publication supabase_realtime add table public.leads;
 
 -- ════════════════════════════════════════════════════════════════
 -- ✅ Terminé. Ta table est prête.

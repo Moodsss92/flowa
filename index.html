@@ -1,2487 +1,1027 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flowa — Landing pages & Automatisation sur-mesure</title>
-  <meta name="description" content="Flowa crée des landing pages qui convertissent et automatise vos processus business. Solutions sur-mesure pour entrepreneurs et freelances. Bruxelles, Belgique.">
-  <meta name="author" content="Flowa">
-  <link rel="canonical" href="https://moodsss92.github.io/flowa/">
-
-  <!-- Open Graph (Facebook, WhatsApp, LinkedIn, etc.) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://moodsss92.github.io/flowa/">
-  <meta property="og:title" content="Flowa — Landing pages & Automatisation sur-mesure">
-  <meta property="og:description" content="Landing pages qui convertissent. Tâches qui s'automatisent. Solutions sur-mesure pour votre business.">
-  <meta property="og:image" content="https://moodsss92.github.io/flowa/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:locale" content="fr_BE">
-  <meta property="og:site_name" content="Flowa">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Flowa — Landing pages & Automatisation sur-mesure">
-  <meta name="twitter:description" content="Landing pages qui convertissent. Tâches qui s'automatisent. Solutions sur-mesure pour votre business.">
-  <meta name="twitter:image" content="https://moodsss92.github.io/flowa/og-image.png">
-
-  <!-- Favicon SVG -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%237B2FBE'/><text x='50' y='68' font-size='55' font-weight='bold' font-family='system-ui,sans-serif' fill='white' text-anchor='middle'>F</text></svg>">
-
-  <!-- Theme color (barre d'adresse mobile) -->
-  <meta name="theme-color" content="#7B2FBE">
-
-  <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --black:  #080808;
-      --violet: #7B2FBE;
-      --coral:  #FF6B6B;
-      --grey:   #333333;
-      --white:  #FFFFFF;
-      --offwhite: #F8F8F8;
-      --gradient: linear-gradient(135deg, var(--violet), var(--coral));
-      --gradient-hover: linear-gradient(135deg, #6422a8, #e85d5d);
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      background: #fff;
-      overflow-x: hidden;
-    }
-
-    /* ─── NAV ─────────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: var(--white);
-      box-shadow: none;
-      transition: background 0.35s ease, box-shadow 0.35s ease;
-      animation: slideDown 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-
-    nav.scrolled {
-      background: var(--offwhite);
-      box-shadow: 0 1px 20px rgba(0, 0, 0, 0.07);
-    }
-
-    @keyframes slideDown {
-      from { transform: translateY(-100%); opacity: 0; }
-      to   { transform: translateY(0);     opacity: 1; }
-    }
-
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 32px;
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    /* ─── LOGO ────────────────────────────────────────── */
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      text-decoration: none;
-      user-select: none;
-    }
-
-    .logo-text {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      color: var(--black);
-      font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      text-transform: uppercase;
-    }
-
-    .logo-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gradient);
-      margin-bottom: 10px;
-      flex-shrink: 0;
-    }
-
-    /* ─── LINKS ───────────────────────────────────────── */
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 14.5px;
-      font-weight: 500;
-      color: var(--grey);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      position: relative;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -3px;
-      width: 0;
-      height: 1.5px;
-      background: var(--violet);
-      border-radius: 100px;
-      transition: width 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--violet);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    /* ─── CTA ─────────────────────────────────────────── */
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      padding: 11px 24px;
-      background: var(--gradient);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      border-radius: 100px;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      white-space: nowrap;
-      transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
-      box-shadow: 0 4px 20px rgba(123, 47, 190, 0.25), 0 4px 16px rgba(255, 107, 107, 0.15);
-    }
-
-    .cta-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(123, 47, 190, 0.35), 0 6px 20px rgba(255, 107, 107, 0.2);
-      filter: brightness(1.1);
-    }
-
-    .cta-btn:active {
-      transform: translateY(0);
-    }
-
-    /* ─── HAMBURGER ───────────────────────────────────── */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      gap: 5.5px;
-      padding: 4px;
-      border-radius: 8px;
-      transition: background 0.2s ease;
-    }
-
-    .hamburger:hover {
-      background: rgba(123, 47, 190, 0.07);
-    }
-
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--black);
-      border-radius: 100px;
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity  0.25s ease,
-                  width    0.3s ease;
-      transform-origin: center;
-    }
-
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(7.5px) rotate(45deg);
-    }
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-      width: 0;
-    }
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-7.5px) rotate(-45deg);
-    }
-
-    /* ─── MOBILE MENU ─────────────────────────────────── */
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0;
-      background: var(--white);
-      padding: 0 32px;
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-                  padding   0.35s ease,
-                  box-shadow 0.35s ease;
-    }
-
-    .mobile-menu.open {
-      max-height: 400px;
-      padding: 16px 32px 28px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
-    }
-
-    .mobile-menu a {
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--grey);
-      text-decoration: none;
-      padding: 10px 0;
-      width: 100%;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
-      transition: color 0.3s ease, padding-left 0.3s ease;
-    }
-
-    .mobile-menu a:last-of-type {
-      border-bottom: none;
-    }
-
-    .mobile-menu a:hover {
-      color: var(--violet);
-      padding-left: 6px;
-    }
-
-    .mobile-menu .cta-btn {
-      margin-top: 18px;
-      width: 100%;
-      justify-content: center;
-    }
-
-    /* ─── HERO ────────────────────────────────────────── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 120px 32px 80px;
-      position: relative;
-      overflow: hidden;
-      background: var(--white);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -30%;
-      right: -15%;
-      width: 700px;
-      height: 700px;
-      background: radial-gradient(circle, rgba(123, 47, 190, 0.08) 0%, rgba(255, 107, 107, 0.03) 50%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: floatOrb 8s ease-in-out infinite alternate;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: -25%;
-      left: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(255, 107, 107, 0.06) 0%, rgba(123, 47, 190, 0.03) 50%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-      animation: floatOrb 10s ease-in-out infinite alternate-reverse;
-    }
-
-    @keyframes floatOrb {
-      0%   { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(30px, -20px) scale(1.05); }
-    }
-
-    .hero-inner {
-      max-width: 900px;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 18px;
-      background: linear-gradient(135deg, rgba(123, 47, 190, 0.07), rgba(255, 107, 107, 0.05));
-      border: 1px solid rgba(123, 47, 190, 0.12);
-      border-radius: 100px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--violet);
-      letter-spacing: 0.02em;
-      margin-bottom: 32px;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-    }
-
-    .hero-badge-dot {
-      width: 6px;
-      height: 6px;
-      background: var(--violet);
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%      { opacity: 0.5; transform: scale(1.4); }
-    }
-
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 66px);
-      font-weight: 800;
-      color: var(--black);
-      line-height: 1.1;
-      letter-spacing: -0.03em;
-      margin-bottom: 28px;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.45s forwards;
-    }
-
-    .hero h1 .accent {
-      background: linear-gradient(135deg, var(--violet) 0%, var(--coral) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-sub {
-      font-size: clamp(16px, 2vw, 19px);
-      color: #666;
-      line-height: 1.65;
-      max-width: 580px;
-      margin: 0 auto 48px;
-      font-weight: 400;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
-    }
-
-    .hero-actions .cta-btn {
-      padding: 15px 36px;
-      font-size: 15.5px;
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 15px 32px;
-      background: transparent;
-      color: var(--grey);
-      font-size: 15.5px;
-      font-weight: 600;
-      border-radius: 100px;
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      border: 1.5px solid rgba(0, 0, 0, 0.12);
-      transition: border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--violet);
-      color: var(--violet);
-      transform: translateY(-1px);
-    }
-
-    .btn-secondary svg {
-      transition: transform 0.3s ease;
-    }
-
-    .btn-secondary:hover svg {
-      transform: translateX(3px);
-    }
-
-    .hero-metrics {
-      display: flex;
-      justify-content: center;
-      gap: 56px;
-      margin-top: 72px;
-      padding-top: 48px;
-      border-top: 1px solid rgba(0, 0, 0, 0.06);
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.95s forwards;
-    }
-
-    .metric {
-      text-align: center;
-    }
-
-    .metric-value {
-      font-size: 32px;
-      font-weight: 800;
-      color: var(--black);
-      letter-spacing: -0.02em;
-      line-height: 1;
-    }
-
-    .metric-value .violet {
-      color: var(--violet);
-    }
-
-    .metric-label {
-      font-size: 13px;
-      color: #999;
-      font-weight: 500;
-      margin-top: 8px;
-      letter-spacing: 0.02em;
-    }
-
-    @keyframes fadeUp {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ─── SERVICES ────────────────────────────────────── */
-    .services {
-      padding: 120px 32px;
-      background: var(--offwhite);
-      position: relative;
-    }
-
-    .services-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--violet);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-      justify-content: center;
-    }
-
-    .section-label::before {
-      content: "";
-      width: 24px;
-      height: 2px;
-      background: var(--violet);
-      border-radius: 100px;
-    }
-
-    .section-heading {
-      font-size: clamp(36px, 5.5vw, 58px);
-      font-weight: 800;
-      color: var(--black);
-      letter-spacing: -0.03em;
-      line-height: 1.12;
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .section-desc {
-      font-size: 17px;
-      color: #777;
-      max-width: 520px;
-      line-height: 1.65;
-      margin-bottom: 56px;
-      text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .service-card {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 40px 32px;
-      border: 1px solid rgba(0, 0, 0, 0.05);
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.35s ease,
-                  border-color 0.3s ease;
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .service-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.7s ease,
-                  box-shadow 0.35s ease,
-                  border-color 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(123, 47, 190, 0.08), 0 8px 24px rgba(255, 107, 107, 0.05);
-      border-color: rgba(123, 47, 190, 0.15);
-    }
-
-    .service-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: var(--gradient);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .service-card:hover::after {
-      opacity: 1;
-    }
-
-    .service-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      background: rgba(123, 47, 190, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-
-    .service-card:hover .service-icon {
-      background: var(--gradient);
-      transform: scale(1.05);
-    }
-
-    .service-icon svg {
-      width: 24px;
-      height: 24px;
-      stroke: var(--violet);
-      stroke-width: 1.8;
-      fill: none;
-      transition: stroke 0.3s ease;
-    }
-
-    .service-card:hover .service-icon svg {
-      stroke: #fff;
-    }
-
-    .service-card h3 {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
-    }
-
-    .service-card p {
-      font-size: 14.5px;
-      color: #888;
-      line-height: 1.65;
-    }
-
-    .service-card .card-arrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 20px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--violet);
-      opacity: 0;
-      transform: translateX(-8px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .service-card:hover .card-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .card-arrow svg {
-      width: 14px;
-      height: 14px;
-      stroke: var(--violet);
-      stroke-width: 2;
-      fill: none;
-    }
-
-    /* ─── RÉSULTATS ───────────────────────────────────── */
-    .projects {
-      padding: 120px 32px;
-      background: var(--white);
-    }
-
-    .projects-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .projects-header {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 56px;
-    }
-
-    .projects-header-text {
-      max-width: 600px;
-      text-align: center;
-    }
-
-    .results-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .result-card {
-      border-radius: 20px;
-      overflow: hidden;
-      position: relative;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
-    }
-
-    .result-card.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.7s ease,
-                  box-shadow 0.35s ease;
-    }
-
-    .result-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-    }
-
-    .result-card-top {
-      padding: 36px 32px 28px;
-      position: relative;
-    }
-
-    .result-card:nth-child(1) .result-card-top {
-      background: linear-gradient(135deg, var(--violet) 0%, #a855f7 100%);
-    }
-    .result-card:nth-child(2) .result-card-top {
-      background: linear-gradient(135deg, #9333ea 0%, var(--coral) 100%);
-    }
-    .result-card:nth-child(3) .result-card-top {
-      background: linear-gradient(135deg, var(--coral) 0%, #f59e0b 100%);
-    }
-
-    .result-card-top .result-tag {
-      display: inline-block;
-      padding: 5px 12px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 16px;
-    }
-
-    .result-card-top h3 {
-      font-size: 20px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-    }
-
-    .result-card-top p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.55;
-    }
-
-    .result-card-bottom {
-      background: var(--white);
-      border: 1px solid rgba(0,0,0,0.06);
-      border-top: none;
-      border-radius: 0 0 20px 20px;
-      padding: 28px 32px;
-    }
-
-    .result-stat {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-    }
-
-    .result-stat:last-child {
-      margin-bottom: 0;
-    }
-
-    .result-stat-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(123, 47, 190, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .result-stat-icon svg {
-      width: 16px;
-      height: 16px;
-      stroke: var(--violet);
-      stroke-width: 2;
-      fill: none;
-    }
-
-    .result-stat span {
-      font-size: 14px;
-      color: var(--grey);
-      font-weight: 500;
-    }
-
-    .result-stat strong {
-      color: var(--violet);
-      font-weight: 700;
-    }
-
-    .result-gain {
-      margin-top: 20px;
-      padding-top: 16px;
-      border-top: 1px solid rgba(0,0,0,0.06);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .result-gain-badge {
-      padding: 6px 14px;
-      border-radius: 100px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .result-card:nth-child(1) .result-gain-badge {
-      background: rgba(5, 150, 105, 0.1);
-      color: #059669;
-    }
-    .result-card:nth-child(2) .result-gain-badge {
-      background: rgba(37, 99, 235, 0.1);
-      color: #2563eb;
-    }
-    .result-card:nth-child(3) .result-gain-badge {
-      background: rgba(123, 47, 190, 0.1);
-      color: var(--violet);
-    }
-
-    .result-gain span {
-      font-size: 13px;
-      color: #999;
-      font-weight: 500;
-    }
-
-    /* ─── TÉMOIGNAGES ─────────────────────────────────── */
-    .testimonials {
-      padding: 120px 32px;
-      background: var(--offwhite);
-      overflow: hidden;
-    }
-
-    .testimonials-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .testimonials-header {
-      text-align: center;
-      max-width: 560px;
-      margin: 0 auto 64px;
-    }
-
-    .testimonials-header .section-label {
-      justify-content: center;
-    }
-
-    .testimonials-header .section-desc {
-      max-width: 100%;
-      margin-bottom: 0;
-    }
-
-    .testimonials-track {
-      display: flex;
-      gap: 24px;
-      animation: scroll-left 35s linear infinite;
-      width: max-content;
-    }
-
-    .testimonials-track:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes scroll-left {
-      0%   { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    .testimonial-card {
-      flex-shrink: 0;
-      width: 380px;
-      background: var(--white);
-      border-radius: 20px;
-      padding: 36px 32px;
-      border: 1px solid rgba(0,0,0,0.05);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      position: relative;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.06);
-    }
-
-    .testimonial-quote {
-      position: absolute;
-      top: 28px;
-      right: 28px;
-      font-size: 48px;
-      font-weight: 800;
-      color: rgba(123, 47, 190, 0.08);
-      line-height: 1;
-      font-family: Georgia, serif;
-      pointer-events: none;
-    }
-
-    .testimonial-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 18px;
-    }
-
-    .testimonial-stars svg {
-      width: 16px;
-      height: 16px;
-      fill: #FBBF24;
-    }
-
-    .testimonial-card p {
-      font-size: 15px;
-      color: #555;
-      line-height: 1.7;
-      margin-bottom: 24px;
-      font-style: italic;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .testimonial-avatar {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-weight: 800;
-      color: #fff;
-      flex-shrink: 0;
-    }
-
-    .testimonial-author-info strong {
-      display: block;
-      font-size: 14.5px;
-      font-weight: 700;
-      color: var(--black);
-    }
-
-    .testimonial-author-info span {
-      font-size: 12.5px;
-      color: #999;
-      font-weight: 500;
-    }
-
-    /* ─── NOTRE MÉTHODE ──────────────────────────────── */
-    .about {
-      padding: 120px 32px;
-      background: var(--offwhite);
-    }
-
-    .about-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .about-content {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .about-content.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
-    }
-
-    /* ── Timeline méthode ── */
-    .methode-timeline {
-      display: flex;
-      justify-content: space-between;
-      position: relative;
-      margin-top: 64px;
-      padding: 0 20px;
-    }
-
-    /* Ligne horizontale connectrice */
-    .methode-timeline::before {
-      content: '';
-      position: absolute;
-      top: 36px;
-      left: calc(12.5% + 10px);
-      right: calc(12.5% + 10px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--violet), var(--coral));
-      z-index: 0;
-    }
-
-    .methode-step {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      z-index: 1;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .methode-step.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                  opacity 0.7s ease;
-    }
-
-    /* Cercle numéroté */
-    .methode-number {
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      background: var(--white);
-      border: 2.5px solid var(--violet);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      font-weight: 800;
-      color: var(--violet);
-      margin-bottom: 24px;
-      position: relative;
-      box-shadow: 0 8px 30px rgba(123, 47, 190, 0.12);
-      transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .methode-step:hover .methode-number {
-      background: var(--gradient);
-      border-color: transparent;
-      color: #fff;
-      transform: scale(1.1);
-      box-shadow: 0 12px 40px rgba(123, 47, 190, 0.3), 0 8px 20px rgba(255, 107, 107, 0.15);
-    }
-
-    /* Icône sous le cercle */
-    .methode-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(123, 47, 190, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 18px;
-      transition: background 0.3s ease;
-    }
-
-    .methode-step:hover .methode-icon {
-      background: rgba(123, 47, 190, 0.12);
-    }
-
-    .methode-icon svg {
-      width: 22px;
-      height: 22px;
-      stroke: var(--violet);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .methode-step {
-      cursor: pointer;
-    }
-
-    .methode-step h4 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 8px;
-    }
-
-    .methode-step p {
-      font-size: 14px;
-      color: #777;
-      line-height: 1.6;
-      max-width: 220px;
-    }
-
-    /* Responsive méthode */
-
-    /* ─── CONTACT ─────────────────────────────────────── */
-    .contact {
-      padding: 120px 32px;
-      background: var(--offwhite);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact::before {
-      content: "";
-      position: absolute;
-      top: -200px;
-      right: -200px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(123, 47, 190, 0.04) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .contact-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: 80px;
-      align-items: start;
-    }
-
-    .contact-left {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-
-    .contact-left.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.8s ease;
-    }
-
-    .contact-left .section-label { justify-content: flex-start; }
-    .contact-left .section-heading { text-align: left; }
-    .contact-left .section-desc { margin-bottom: 40px; text-align: left; margin-left: 0; }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      margin-bottom: 40px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .contact-item-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
-      background: rgba(123, 47, 190, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.3s ease;
-    }
-
-    .contact-item:hover .contact-item-icon {
-      background: var(--violet);
-    }
-
-    .contact-item-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--violet);
-      stroke-width: 1.8;
-      fill: none;
-      transition: stroke 0.3s ease;
-    }
-
-    .contact-item:hover .contact-item-icon svg {
-      stroke: #fff;
-    }
-
-    .contact-item-text span {
-      display: block;
-      font-size: 12px;
-      color: #aaa;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 2px;
-    }
-
-    .contact-item-text a,
-    .contact-item-text p {
-      font-size: 15px;
-      color: var(--black);
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.3s ease;
-      margin: 0;
-    }
-
-    .contact-item-text a:hover {
-      color: var(--violet);
-    }
-
-    .contact-socials {
-      display: flex;
-      gap: 12px;
-    }
-
-    .social-link {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1.5px solid rgba(0,0,0,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: border-color 0.3s ease, background 0.3s ease, transform 0.2s ease;
-    }
-
-    .social-link:hover {
-      border-color: var(--violet);
-      background: rgba(123, 47, 190, 0.06);
-      transform: translateY(-2px);
-    }
-
-    .social-link svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--grey);
-      transition: fill 0.3s ease;
-    }
-
-    .social-link:hover svg {
-      fill: var(--violet);
-    }
-
-    /* ─── FUNNEL MULTI-ÉTAPES ───────────────────────── */
-    .funnel {
-      background: var(--white);
-      border-radius: 24px;
-      padding: 44px;
-      border: 1px solid rgba(0,0,0,0.04);
-      opacity: 0;
-      transform: translateY(40px);
-      max-width: 520px;
-      width: 100%;
-    }
-
-    .funnel.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.12s, opacity 0.8s ease 0.12s;
-    }
-
-    .funnel-progress {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 32px;
-    }
-
-    .funnel-progress-step {
-      flex: 1;
-      height: 4px;
-      border-radius: 4px;
-      background: rgba(0,0,0,0.06);
-      transition: background 0.4s ease;
-    }
-
-    .funnel-progress-step.active {
-      background: var(--gradient);
-    }
-
-    .funnel-progress-step.done {
-      background: var(--gradient);
-    }
-
-    .funnel-step {
-      display: none;
-      animation: fadeUp 0.4s ease;
-    }
-
-    .funnel-step.active {
-      display: block;
-    }
-
-    .funnel-step h3 {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 6px;
-    }
-
-    .funnel-step > p {
-      font-size: 14px;
-      color: #999;
-      margin-bottom: 28px;
-    }
-
-    /* Option cards (services + budget) */
-    .funnel-options {
-      display: grid;
-      gap: 10px;
-    }
-
-    .funnel-option {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      border: 1.5px solid rgba(0,0,0,0.08);
-      border-radius: 14px;
-      cursor: pointer;
-      transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
-      background: var(--white);
-    }
-
-    .funnel-option:hover {
-      border-color: rgba(123, 47, 190, 0.3);
-      background: rgba(123, 47, 190, 0.02);
-    }
-
-    .funnel-option.selected {
-      border-color: var(--violet);
-      background: linear-gradient(135deg, rgba(123, 47, 190, 0.05), rgba(255, 107, 107, 0.03));
-    }
-
-    .funnel-option-icon {
-      width: 40px;
-      height: 40px;
-      min-width: 40px;
-      border-radius: 10px;
-      background: rgba(123, 47, 190, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .funnel-option-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--violet);
-      fill: none;
-      stroke-width: 1.8;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .funnel-option-text {
-      font-size: 14.5px;
-      font-weight: 600;
-      color: var(--black);
-    }
-
-    .funnel-option-desc {
-      font-size: 12.5px;
-      color: #999;
-      margin-top: 2px;
-      font-weight: 400;
-    }
-
-    /* Identity step inputs */
-    .funnel-group {
-      margin-bottom: 16px;
-    }
-
-    .funnel-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--grey);
-      margin-bottom: 8px;
-    }
-
-    .funnel-group input {
-      width: 100%;
-      padding: 14px 18px;
-      border: 1.5px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      font-size: 14.5px;
-      font-family: inherit;
-      color: var(--black);
-      background: var(--white);
-      outline: none;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      -webkit-appearance: none;
-    }
-
-    .funnel-group input::placeholder {
-      color: #bbb;
-    }
-
-    .funnel-group input:focus {
-      border-color: var(--violet);
-      box-shadow: 0 0 0 3px rgba(123, 47, 190, 0.1);
-    }
-
-    /* Navigation buttons */
-    .funnel-nav {
-      display: flex;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .funnel-back {
-      padding: 14px 24px;
-      background: transparent;
-      color: var(--grey);
-      font-size: 14px;
-      font-weight: 600;
-      border: 1.5px solid rgba(0,0,0,0.08);
-      border-radius: 12px;
-      cursor: pointer;
-      font-family: inherit;
-      transition: border-color 0.3s ease, background 0.3s ease;
-    }
-
-    .funnel-back:hover {
-      border-color: rgba(0,0,0,0.15);
-      background: var(--offwhite);
-    }
-
-    .funnel-next,
-    .funnel-submit {
-      flex: 1;
-      padding: 14px 24px;
-      background: var(--gradient);
-      color: #fff;
-      font-size: 14px;
-      font-weight: 700;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      font-family: inherit;
-      transition: transform 0.2s ease, box-shadow 0.3s ease, filter 0.3s ease;
-      box-shadow: 0 4px 16px rgba(123, 47, 190, 0.25), 0 4px 12px rgba(255, 107, 107, 0.12);
-    }
-
-    .funnel-next:hover,
-    .funnel-submit:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 22px rgba(123, 47, 190, 0.35), 0 6px 16px rgba(255, 107, 107, 0.2);
-      filter: brightness(1.08);
-    }
-
-    .funnel-next:disabled,
-    .funnel-submit:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    /* Success screen */
-    .funnel-success {
-      display: none;
-      text-align: center;
-      padding: 20px 0;
-      animation: fadeUp 0.5s ease;
-    }
-
-    .funnel-success.active {
-      display: block;
-    }
-
-    .funnel-success-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: rgba(34, 197, 94, 0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-    }
-
-    .funnel-success-icon svg {
-      width: 32px;
-      height: 32px;
-      stroke: #22c55e;
-      fill: none;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .funnel-success h3 {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 8px;
-    }
-
-    .funnel-success p {
-      font-size: 14px;
-      color: #999;
-      line-height: 1.6;
-    }
-
-    .funnel-error {
-      margin-top: 12px;
-      padding: 12px 16px;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 500;
-      display: none;
-      background: rgba(239, 68, 68, 0.08);
-      color: #b91c1c;
-      border: 1px solid rgba(239, 68, 68, 0.2);
-      animation: fadeUp 0.3s ease;
-    }
-
-    .funnel-error.show {
-      display: block;
-    }
-
-    /* Honeypot hidden */
-    .hp-field {
-      position: absolute;
-      left: -9999px;
-      width: 1px;
-      height: 1px;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* ─── FOOTER ──────────────────────────────────────── */
-    .footer {
-      background: var(--black);
-      padding: 64px 32px 32px;
-    }
-
-    .footer-top {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 32px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 28px;
-    }
-
-    .footer .logo-text { color: #fff; }
-
-    .footer-links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .footer-links a {
-      font-size: 14px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.5);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-links a:hover { color: #fff; }
-
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-bottom p {
-      font-size: 13px;
-      color: rgba(255,255,255,0.35);
-    }
-
-    .footer-bottom-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-bottom-links a {
-      font-size: 13px;
-      color: rgba(255,255,255,0.35);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
-
-    /* ─── RESPONSIVE ──────────────────────────────────── */
-    @media (max-width: 860px) {
-      .nav-links,
-      .nav-inner > .cta-btn {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .mobile-menu {
-        display: flex;
-      }
-
-      .hero-metrics {
-        gap: 32px;
-      }
-
-      .metric-value {
-        font-size: 26px;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .services {
-        padding: 80px 24px;
-      }
-
-      .section-desc {
-        margin-bottom: 40px;
-      }
-
-      .projects {
-        padding: 80px 24px;
-      }
-
-      .projects-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 24px;
-      }
-
-      .results-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .testimonials {
-        padding: 80px 24px;
-      }
-
-      .testimonial-card {
-        width: 300px;
-      }
-
-      .about {
-        padding: 80px 24px;
-      }
-
-      .methode-timeline {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 48px 24px;
-      }
-
-      .methode-timeline::before {
-        display: none;
-      }
-
-      .contact {
-        padding: 80px 24px;
-      }
-
-      .contact-inner {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
-
-      .contact-form {
-        padding: 28px;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
-      }
-
-      .footer-top {
-        flex-direction: column;
-        gap: 24px;
-        text-align: center;
-      }
-
-      .footer-links {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-metrics {
-        flex-direction: column;
-        gap: 24px;
-      }
-
-      .methode-timeline {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXFQ6LZBV6"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXFQ6LZBV6');
-  </script>
-
-  <!-- Supabase JS client -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- EmailJS -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flowa — Landing pages & automatisation sur-mesure · Bruxelles</title>
+<meta name="description" content="Flowa conçoit des landing pages qui convertissent et automatise vos processus business. Sur-mesure. Bruxelles." />
+<meta property="og:title" content="Flowa — Landing pages & automatisation sur-mesure" />
+<meta property="og:description" content="Conçu pour convertir. Pensé pour automatiser. Sur-mesure, Bruxelles." />
+<meta property="og:image" content="og-image.png" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Flowa — Landing pages & automatisation" />
+<meta name="twitter:description" content="Conçu pour convertir. Pensé pour automatiser." />
+<meta name="twitter:image" content="og-image.png" />
+<meta name="theme-color" content="#7B2FBE" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%237B2FBE'/><stop offset='100%25' stop-color='%23FF6B6B'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='url(%23g)'/><text x='50' y='68' font-size='58' font-weight='800' font-family='system-ui,sans-serif' fill='white' text-anchor='middle'>F</text></svg>">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXFQ6LZBV6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXFQ6LZBV6');
+</script>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+<!-- Supabase + EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<style>
+:root{
+  --bg:#f5f5f7;
+  --bg-elevated:#ffffff;
+  --ink:#1d1d1f;
+  --ink-2:#424245;
+  --ink-3:#6e6e73;
+  --ink-4:#a1a1a6;
+  --hairline:rgba(0,0,0,0.08);
+  --violet:#7B2FBE;
+  --coral:#FF6B6B;
+  --accent-grad:linear-gradient(135deg,#7B2FBE 0%,#FF6B6B 100%);
+  --glass:rgba(255,255,255,0.72);
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.04),0 1px 1px rgba(0,0,0,0.03);
+  --shadow-md:0 8px 24px rgba(0,0,0,0.06),0 2px 6px rgba(0,0,0,0.04);
+  --spring:cubic-bezier(0.34,1.56,0.64,1);
+  --ease-ios:cubic-bezier(0.22,1,0.36,1);
+  --radius-md:18px;
+  --radius-lg:28px;
+  --radius-xl:40px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Inter","Segoe UI",Helvetica,Arial,sans-serif;
+  background:var(--bg);color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:-0.01em;overflow-x:hidden;
+}
+::selection{background:rgba(123,47,190,0.22);color:var(--ink)}
+
+/* helpers */
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink-3);letter-spacing:.02em}
+.eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--accent-grad);box-shadow:0 0 0 4px rgba(123,47,190,.10)}
+.h-display{font-size:clamp(40px,6.4vw,80px);font-weight:700;line-height:1.02;letter-spacing:-.045em;color:var(--ink)}
+.h-section{font-size:clamp(34px,4.8vw,56px);font-weight:700;line-height:1.05;letter-spacing:-.04em;color:var(--ink)}
+.lead{font-size:clamp(17px,1.6vw,20px);line-height:1.5;color:var(--ink-3);font-weight:400;letter-spacing:-.005em}
+.gradient-text{background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+
+/* nav */
+.nav{
+  position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:100;
+  width:calc(100% - 24px);max-width:1080px;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px 10px 22px;
+  background:var(--glass);
+  backdrop-filter:saturate(180%) blur(24px);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+  border:1px solid rgba(255,255,255,0.6);
+  box-shadow:0 1px 0 rgba(255,255,255,0.7) inset,0 6px 24px rgba(0,0,0,0.06);
+  border-radius:999px;
+  transition:box-shadow .3s var(--ease-ios);
+}
+.nav.scrolled{box-shadow:0 1px 0 rgba(255,255,255,0.7) inset,0 12px 40px rgba(0,0,0,0.08)}
+.nav-logo{display:flex;align-items:center;gap:4px;text-decoration:none;color:var(--ink)}
+.nav-logo .mark{font-weight:700;font-size:17px;letter-spacing:-.02em}
+.nav-logo .pip{width:6px;height:6px;border-radius:999px;background:var(--accent-grad);display:inline-block;transform:translateY(5px);box-shadow:0 0 0 3px rgba(123,47,190,.10)}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{padding:7px 12px;border-radius:999px;font-size:13.5px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:background .2s,color .2s}
+.nav-links a:hover{background:rgba(0,0,0,.05);color:var(--ink)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.lang-toggle{display:flex;align-items:center;background:rgba(0,0,0,.05);border-radius:999px;padding:3px}
+.lang-toggle button{background:transparent;border:0;cursor:pointer;padding:5px 10px;border-radius:999px;color:var(--ink-3);font-weight:600;font-size:12px;transition:background .25s,color .25s;font-family:inherit}
+.lang-toggle button.active{background:var(--bg-elevated);color:var(--ink);box-shadow:var(--shadow-sm)}
+.btn-pill{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;background:var(--ink);color:#fff;border-radius:999px;text-decoration:none;font-size:13.5px;font-weight:600;border:0;cursor:pointer;transition:transform .25s var(--spring),background .25s}
+.btn-pill:hover{background:#000;transform:translateY(-1px)}
+.btn-pill svg{width:14px;height:14px;transition:transform .25s var(--ease-ios)}
+.btn-pill:hover svg{transform:translateX(2px)}
+.hamburger{display:none}
+
+/* hero */
+.hero{position:relative;padding:140px 24px 80px;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(60% 50% at 50% 0%,rgba(123,47,190,.10),transparent 70%),
+             radial-gradient(50% 40% at 80% 30%,rgba(255,107,107,.08),transparent 70%),
+             radial-gradient(40% 30% at 15% 30%,rgba(56,148,255,.06),transparent 70%)}
+.hero-grain{position:absolute;inset:0;pointer-events:none;opacity:.5;z-index:0;
+  background-image:radial-gradient(rgba(0,0,0,.04) 1px,transparent 1px);
+  background-size:4px 4px;mix-blend-mode:multiply;
+  mask-image:radial-gradient(ellipse at center,black 30%,transparent 70%)}
+.hero-inner{position:relative;z-index:1;max-width:920px;margin:0 auto}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:6px 14px 6px 8px;background:var(--bg-elevated);
+  border:1px solid var(--hairline);border-radius:999px;
+  font-size:12.5px;font-weight:600;color:var(--ink-2);
+  box-shadow:var(--shadow-sm);margin-bottom:28px;
+  opacity:0;transform:translateY(10px);
+  animation:rise .8s var(--ease-ios) .15s forwards}
+.hero-badge .pip{width:18px;height:18px;border-radius:999px;background:var(--accent-grad);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:10px}
+.hero h1{opacity:0;transform:translateY(14px);animation:rise .9s var(--ease-ios) .25s forwards}
+.hero-sub{margin:22px auto 36px;max-width:600px;opacity:0;transform:translateY(14px);animation:rise .9s var(--ease-ios) .4s forwards;min-height:3.4em}
+.tw-text{white-space:pre-wrap}
+.tw-caret{display:inline-block;width:2px;height:1.05em;vertical-align:-.18em;margin-left:3px;background:var(--ink);animation:caretBlink 1s steps(1) infinite;border-radius:1px}
+@keyframes caretBlink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.hero-cta{display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;opacity:0;transform:translateY(14px);animation:rise .9s var(--ease-ios) .55s forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;background:var(--ink);color:#fff;border-radius:999px;text-decoration:none;font-size:15px;font-weight:600;box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 10px 24px rgba(0,0,0,.18);transition:transform .25s var(--spring),background .25s}
+.btn-primary:hover{transform:translateY(-2px) scale(1.02)}
+.btn-primary svg{width:14px;height:14px;transition:transform .25s var(--ease-ios)}
+.btn-primary:hover svg{transform:translateX(3px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;background:var(--bg-elevated);color:var(--ink);border:1px solid var(--hairline);border-radius:999px;text-decoration:none;font-size:15px;font-weight:600;transition:transform .25s var(--spring),background .25s,border-color .25s}
+.btn-ghost:hover{transform:translateY(-2px);border-color:rgba(0,0,0,.18)}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+
+/* hero stage */
+.hero-stage{position:relative;margin:64px auto 0;max-width:980px;height:560px;perspective:1400px;opacity:0;transform:translateY(40px);animation:rise 1s var(--ease-ios) .7s forwards}
+.iphone{position:absolute;left:50%;top:0;transform:translateX(-50%) rotateX(8deg);width:290px;height:590px;border-radius:50px;background:linear-gradient(180deg,#1d1d1f,#0a0a0c);box-shadow:0 0 0 2px #2a2a2c inset,0 0 0 6px #0a0a0c inset,0 80px 100px -40px rgba(0,0,0,.45),0 30px 60px -20px rgba(123,47,190,.25);padding:8px;z-index:3}
+.iphone-screen{width:100%;height:100%;border-radius:42px;background:#fff;overflow:hidden;position:relative}
+.notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:110px;height:32px;border-radius:999px;background:#0a0a0c;z-index:2}
+.statusbar{position:absolute;top:0;left:0;right:0;height:56px;display:flex;align-items:center;justify-content:space-between;padding:18px 26px 0;font-size:14px;font-weight:600;color:var(--ink);z-index:1}
+.statusbar .icons{display:flex;align-items:center;gap:5px}
+.app{padding:64px 18px 18px;height:100%;display:flex;flex-direction:column;gap:12px}
+.app .app-eyebrow{font-size:9.5px;font-weight:700;color:var(--violet);letter-spacing:.12em;text-transform:uppercase}
+.app .app-h{font-size:22px;font-weight:700;line-height:1.05;letter-spacing:-.025em;color:var(--ink)}
+.app .app-h .em{display:block}
+.app .app-sub{font-size:11px;color:var(--ink-3);line-height:1.45}
+.app-card{background:linear-gradient(180deg,#fff,#fafafc);border:1px solid var(--hairline);border-radius:16px;padding:12px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-sm)}
+.app-card .ic{width:30px;height:30px;border-radius:9px;background:rgba(123,47,190,.10);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.app-card .ic svg{width:16px;height:16px;stroke:var(--violet);fill:none;stroke-width:1.8}
+.app-card .meta{display:flex;flex-direction:column;gap:2px}
+.app-card .meta b{font-size:11.5px;color:var(--ink);font-weight:600}
+.app-card .meta span{font-size:10px;color:var(--ink-3)}
+.app-cta{margin-top:auto;background:var(--ink);color:#fff;text-align:center;padding:10px 14px;border-radius:12px;font-size:12px;font-weight:600}
+
+.float-card{position:absolute;background:rgba(255,255,255,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border:1px solid rgba(255,255,255,.7);border-radius:18px;padding:14px 16px;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 20px 40px -20px rgba(0,0,0,.18);display:flex;align-items:center;gap:10px;z-index:2;animation:float 6s ease-in-out infinite}
+.float-card .ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.float-card .ic svg{width:17px;height:17px}
+.float-card b{font-size:13px;font-weight:600;color:var(--ink);display:block;letter-spacing:-.01em}
+.float-card span{font-size:11.5px;color:var(--ink-3)}
+.fc-1{top:60px;left:max(20px,calc(50% - 320px));animation-delay:-1s}
+.fc-1 .ic{background:rgba(52,199,89,.14)}
+.fc-1 .ic svg{stroke:#34c759;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fc-2{top:200px;right:max(20px,calc(50% - 340px));animation-delay:-3s}
+.fc-2 .ic{background:rgba(255,107,107,.14)}
+.fc-2 .ic svg{stroke:var(--coral);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fc-3{top:380px;left:max(50px,calc(50% - 280px));animation-delay:-2s}
+.fc-3 .ic{background:rgba(123,47,190,.14)}
+.fc-3 .ic svg{stroke:var(--violet);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+.hero-meta{display:flex;gap:0;justify-content:center;margin-top:60px;padding:24px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);opacity:0;transform:translateY(14px);animation:rise 1s var(--ease-ios) .9s forwards}
+.hero-meta .item{flex:1;display:flex;flex-direction:column;align-items:center;border-right:1px solid var(--hairline);padding:0 12px}
+.hero-meta .item:last-child{border-right:0}
+.hero-meta b{font-size:clamp(22px,2.5vw,30px);font-weight:700;letter-spacing:-.02em;color:var(--ink)}
+.hero-meta span{font-size:12.5px;color:var(--ink-3);margin-top:4px;font-weight:500}
+
+/* sections */
+section{padding:120px 24px;position:relative}
+.section-head{text-align:center;max-width:720px;margin:0 auto 64px}
+.section-head .eyebrow{margin-bottom:16px}
+.section-head p.lead{margin-top:18px}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1180px;margin:0 auto}
+.tile{position:relative;background:var(--bg-elevated);border:1px solid var(--hairline);border-radius:var(--radius-md);padding:28px;overflow:hidden;box-shadow:var(--shadow-sm);transition:transform .35s var(--spring),box-shadow .35s var(--ease-ios),border-color .25s;display:flex;flex-direction:column;gap:12px;cursor:pointer}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(0,0,0,.10)}
+.tile h3{font-size:18px;font-weight:600;letter-spacing:-.02em;color:var(--ink);margin-bottom:8px}
+.tile p{font-size:14px;color:var(--ink-3);line-height:1.55}
+.tile .tile-ic{width:40px;height:40px;border-radius:12px;background:rgba(123,47,190,.08);display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.tile .tile-ic svg{width:22px;height:22px;stroke:var(--violet);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tile-feature{background:radial-gradient(80% 80% at 100% 0%,rgba(123,47,190,.10),transparent 60%),radial-gradient(80% 80% at 0% 100%,rgba(255,107,107,.08),transparent 60%),var(--bg-elevated)}
+.mini-page{position:absolute;right:-10px;bottom:-10px;width:280px;height:200px;background:#fff;border-radius:14px;border:1px solid var(--hairline);box-shadow:0 20px 40px -10px rgba(0,0,0,.10);overflow:hidden;transform:rotate(-6deg);transition:transform .5s var(--spring);padding:14px}
+.tile-feature:hover .mini-page{transform:rotate(-3deg) translateY(-6px)}
+.mini-page .bar{height:8px;background:rgba(0,0,0,.07);border-radius:4px;margin-bottom:6px}
+.mini-page .bar.short{width:60%}
+.mini-page .bar.btn{background:var(--accent-grad);width:80px;height:18px;border-radius:999px;margin:12px 0}
+.mini-page .img{height:60px;background:linear-gradient(135deg,rgba(123,47,190,.18),rgba(255,107,107,.18));border-radius:8px;margin-top:4px}
+.workflow{position:absolute;right:-20px;bottom:-10px;width:360px;height:200px;pointer-events:none}
+.node{position:absolute;padding:8px 12px;background:#fff;border:1px solid var(--hairline);border-radius:12px;font-size:11.5px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:6px;box-shadow:var(--shadow-sm)}
+.node .dot{width:6px;height:6px;border-radius:999px}
+.node-1{left:20px;top:30px}.node-1 .dot{background:#34c759}
+.node-2{left:130px;top:90px}.node-2 .dot{background:var(--violet)}
+.node-3{left:60px;top:160px}.node-3 .dot{background:var(--coral)}
+.node-4{right:30px;top:60px}.node-4 .dot{background:#007aff}
+
+/* method */
+.method-timeline{position:relative;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.method-timeline::before{content:"";position:absolute;top:38px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,transparent 0%,var(--violet) 15%,var(--coral) 50%,var(--violet) 85%,transparent 100%);background-size:200% 100%;animation:flow 5s linear infinite;border-radius:999px;opacity:.4}
+@keyframes flow{to{background-position:-200% 0}}
+.step-card{position:relative;text-align:center;padding:0 14px;cursor:pointer}
+.step-node{position:relative;width:76px;height:76px;margin:0 auto 22px;border-radius:22px;background:var(--bg-elevated);border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);transition:transform .5s var(--spring),box-shadow .4s var(--ease-ios),border-color .3s,background .4s;z-index:2}
+.step-node::before{content:"";position:absolute;inset:-6px;border-radius:26px;background:var(--accent-grad);opacity:0;filter:blur(14px);transition:opacity .4s;z-index:-1}
+.step-node svg{width:30px;height:30px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transition:stroke .35s,transform .5s var(--spring)}
+.step-card:hover .step-node{transform:translateY(-6px) scale(1.06) rotate(-3deg);border-color:transparent;background:var(--accent-grad)}
+.step-card:hover .step-node::before{opacity:.35}
+.step-card:hover .step-node svg{stroke:#fff;transform:scale(1.1)}
+.step-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:var(--violet);letter-spacing:.12em;margin-bottom:6px;text-transform:uppercase;background:rgba(123,47,190,.07);padding:4px 10px;border-radius:999px;transition:background .3s,color .3s}
+.step-card:hover .step-badge{background:var(--ink);color:#fff}
+.step-card h4{font-size:19px;font-weight:600;letter-spacing:-.02em;margin-bottom:8px;color:var(--ink)}
+.step-card p{font-size:13.5px;color:var(--ink-3);line-height:1.55;max-width:220px;margin:0 auto}
+
+/* results */
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1180px;margin:0 auto}
+.result{background:var(--bg-elevated);border:1px solid var(--hairline);border-radius:var(--radius-lg);padding:32px;transition:transform .35s var(--spring),box-shadow .35s;cursor:pointer}
+.result:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.result .tag{display:inline-block;padding:5px 11px;background:rgba(0,0,0,.05);border-radius:999px;font-size:11.5px;font-weight:600;color:var(--ink-2);margin-bottom:24px}
+.result h3{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px}
+.result p{font-size:14.5px;color:var(--ink-3);line-height:1.55;margin-bottom:22px}
+.result .stat{display:flex;align-items:center;gap:10px;padding:12px 0;border-top:1px solid var(--hairline);font-size:13.5px;color:var(--ink-2);font-weight:500}
+.result .stat svg{width:16px;height:16px;stroke:var(--violet);fill:none;stroke-width:1.8;flex-shrink:0}
+
+/* cta / funnel */
+.cta-section{padding:120px 24px;background:linear-gradient(180deg,var(--bg) 0%,#fff 100%)}
+.cta-card{position:relative;max-width:1180px;margin:0 auto;background:radial-gradient(40% 60% at 100% 0%,rgba(123,47,190,.12),transparent 60%),radial-gradient(40% 60% at 0% 100%,rgba(255,107,107,.10),transparent 60%),var(--bg-elevated);border:1px solid var(--hairline);border-radius:var(--radius-xl);padding:56px;display:grid;grid-template-columns:1fr 1.1fr;gap:56px;box-shadow:var(--shadow-md);overflow:hidden}
+.cta-left .eyebrow{margin-bottom:14px}
+.cta-left h2{margin-bottom:16px}
+.cta-left p.lead{margin-bottom:32px;max-width:440px}
+.cta-meta{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.cta-meta-item{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-2);font-weight:500}
+.cta-meta-item .ic{width:32px;height:32px;border-radius:10px;background:rgba(0,0,0,.05);display:flex;align-items:center;justify-content:center}
+.cta-meta-item .ic svg{width:14px;height:14px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.funnel{background:var(--bg-elevated);border:1px solid var(--hairline);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-md);position:relative;min-height:480px;display:flex;flex-direction:column}
+.hp-field{position:absolute;left:-9999px;top:-9999px;opacity:0}
+.progress{display:flex;gap:6px;margin-bottom:28px}
+.progress .seg{flex:1;height:4px;border-radius:999px;background:rgba(0,0,0,.06);transition:background .4s var(--ease-ios)}
+.progress .seg.active{background:var(--accent-grad)}
+.step{display:none;flex:1;flex-direction:column}
+.step.active{display:flex;animation:stepIn .5s var(--ease-ios)}
+@keyframes stepIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.step h3{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:6px}
+.step p.helper{font-size:13.5px;color:var(--ink-3);margin-bottom:20px}
+.options{display:flex;flex-direction:column;gap:8px}
+.option{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--bg);border:1px solid transparent;border-radius:14px;cursor:pointer;transition:background .25s,border-color .25s,transform .2s var(--spring)}
+.option:hover{background:rgba(123,47,190,.05)}
+.option.selected{background:rgba(123,47,190,.07);border-color:var(--violet)}
+.option .opt-ic{width:36px;height:36px;border-radius:10px;background:#fff;border:1px solid var(--hairline);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.option .opt-ic svg{width:16px;height:16px;stroke:var(--ink-2);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.option.selected .opt-ic{background:var(--accent-grad);border-color:transparent}
+.option.selected .opt-ic svg{stroke:#fff}
+.option .opt-text b{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.option .opt-text span{font-size:12px;color:var(--ink-3)}
+.input-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.input-group label{font-size:12px;font-weight:600;color:var(--ink-2)}
+.input-group input{padding:13px 16px;border:1px solid var(--hairline);border-radius:12px;background:var(--bg);font-family:inherit;font-size:14.5px;color:var(--ink);transition:border-color .25s,background .25s}
+.input-group input:focus{outline:0;border-color:var(--violet);background:#fff}
+.funnel-err{background:#fff0f0;border:1px solid #ffd4d4;color:#c0392b;padding:10px 14px;border-radius:10px;font-size:13px;margin-bottom:12px;display:none}
+.step-nav{margin-top:auto;padding-top:22px;display:flex;justify-content:space-between;gap:10px}
+.btn-back,.btn-next{padding:12px 20px;border-radius:999px;font-size:14px;font-weight:600;border:0;cursor:pointer;transition:transform .25s var(--spring),background .25s;font-family:inherit}
+.btn-back{background:rgba(0,0,0,.05);color:var(--ink)}
+.btn-back:hover{background:rgba(0,0,0,.08)}
+.btn-next{background:var(--ink);color:#fff;margin-left:auto;display:inline-flex;align-items:center;gap:6px}
+.btn-next:hover{background:#000;transform:translateY(-1px)}
+.btn-next:disabled{background:rgba(0,0,0,.15);color:rgba(255,255,255,.7);cursor:not-allowed;transform:none}
+.funnel-success{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1;gap:16px}
+.funnel-success.shown{display:flex}
+.funnel-success .check{width:64px;height:64px;border-radius:999px;background:var(--accent-grad);display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(123,47,190,.4);animation:pop .6s var(--spring)}
+.funnel-success .check svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+@keyframes pop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+
+/* footer */
+footer{padding:48px 24px 32px;background:var(--bg);border-top:1px solid var(--hairline)}
+.foot-inner{max-width:1180px;margin:0 auto}
+.foot-top{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--hairline)}
+.foot-links{display:flex;gap:20px;list-style:none}
+.foot-links a{font-size:13.5px;color:var(--ink-3);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--ink)}
+.foot-bot{display:flex;align-items:center;justify-content:space-between;padding-top:24px;font-size:12.5px;color:var(--ink-4)}
+.foot-bot .links{display:flex;gap:18px}
+.foot-bot .links a{color:var(--ink-3);text-decoration:none}
+.foot-bot .links a:hover{color:var(--ink)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease-ios),transform .8s var(--ease-ios)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* glow card */
+.glow-card{position:relative;isolation:isolate;transition:box-shadow .35s var(--ease-ios),border-color .35s var(--ease-ios)}
+.glow-card::before{content:"";position:absolute;inset:-2px;border-radius:inherit;padding:2.5px;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(123,47,190,1),rgba(255,107,107,.95) 30%,rgba(123,47,190,.4) 55%,rgba(123,47,190,0) 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s var(--ease-ios);pointer-events:none;z-index:2;filter:drop-shadow(0 0 14px rgba(123,47,190,.45)) drop-shadow(0 0 24px rgba(255,107,107,.25))}
+.glow-card::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(123,47,190,.14),rgba(255,107,107,.08) 35%,transparent 65%);opacity:0;transition:opacity .55s var(--ease-ios);pointer-events:none;z-index:1}
+.glow-card:hover{box-shadow:0 0 0 1px rgba(123,47,190,.18),0 18px 40px -12px rgba(123,47,190,.35),0 8px 22px -6px rgba(255,107,107,.25)}
+.glow-card:hover::before{opacity:1}
+.glow-card:hover::after{opacity:1}
+.glow-card>*{position:relative;z-index:3}
+
+/* responsive */
+@media(max-width:980px){
+  .nav-links{display:none}
+  .hamburger{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:999px;background:rgba(0,0,0,.05);border:0;cursor:pointer}
+  .hamburger span{width:14px;height:1.5px;background:var(--ink);position:relative}
+  .hamburger span::before,.hamburger span::after{content:"";position:absolute;left:0;width:100%;height:1.5px;background:var(--ink)}
+  .hamburger span::before{top:-5px}
+  .hamburger span::after{top:5px}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .method-timeline{grid-template-columns:repeat(2,1fr);row-gap:48px}
+  .method-timeline::before{display:none}
+  .results-grid{grid-template-columns:1fr}
+  .cta-card{grid-template-columns:1fr;padding:36px;gap:32px}
+  .hero-stage{display:none}
+}
+@media(max-width:720px){
+  .hero{padding:96px 22px 56px}
+  .hero-cta{flex-direction:column;width:100%;gap:10px}
+  .hero-cta .btn-primary,.hero-cta .btn-ghost{width:100%;justify-content:center}
+  .hero-meta{margin-top:56px;padding-top:32px}
+}
+@media(max-width:540px){
+  section{padding:72px 20px}
+  .hero{padding:92px 20px 48px}
+  .hero-meta{flex-wrap:wrap}
+  .hero-meta .item{flex:1 0 50%;padding:18px 12px;border-right:0;border-bottom:1px solid var(--hairline)}
+  .hero-meta .item:nth-child(odd){border-right:1px solid var(--hairline)}
+  .hero-meta .item:nth-last-child(-n+2){border-bottom:0}
+  .bento{grid-template-columns:1fr}
+  .method-timeline{grid-template-columns:1fr}
+  .h-section{font-size:clamp(30px,7vw,40px)}
+  .nav{padding:8px 8px 8px 16px}
+  .nav-right .btn-pill{display:none}
+  .foot-top{flex-direction:column;gap:18px;align-items:flex-start}
+  .foot-bot{flex-direction:column;gap:12px;align-items:flex-start}
+}
+</style>
 </head>
 <body>
 
-  <nav id="navbar">
-    <div class="nav-inner">
-      <a href="#" class="logo" aria-label="Flowa — Accueil">
-        <span class="logo-text">Flowa</span>
-        <span class="logo-dot" aria-hidden="true"></span>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo" aria-label="Flowa">
+    <span class="mark">Flowa</span><span class="pip" aria-hidden="true"></span>
+  </a>
+  <ul class="nav-links" role="list">
+    <li><a href="#solutions" data-i18n="nav.solutions">Solutions</a></li>
+    <li><a href="#method" data-i18n="nav.method">Méthode</a></li>
+    <li><a href="#cases" data-i18n="nav.cases">Cas d'usage</a></li>
+    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle" role="tablist" aria-label="Langue">
+      <button id="lang-fr" class="active" aria-pressed="true">FR</button>
+      <button id="lang-en" aria-pressed="false">EN</button>
+    </div>
+    <a href="#contact" class="btn-pill">
+      <span data-i18n="nav.cta">Démarrer</span>
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+    </a>
+    <button class="hamburger" aria-label="Menu"><span></span></button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grain" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="pip">✦</span>
+      <span data-i18n="hero.badge">Studio · Bruxelles</span>
+    </div>
+    <h1 class="h-display">
+      <span data-i18n="hero.title.1">Conçu pour</span>
+      <span class="gradient-text" data-i18n="hero.title.2">convertir.</span><br>
+      <span data-i18n="hero.title.3">Pensé pour</span>
+      <span class="gradient-text" data-i18n="hero.title.4">automatiser.</span>
+    </h1>
+    <p class="hero-sub lead" data-i18n="hero.sub">Des landing pages qui transforment l'attention en action.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">
+        <span data-i18n="hero.cta.primary">Lancer mon projet</span>
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
       </a>
-
-      <ul class="nav-links" role="list">
-        <li><a href="#hero">Accueil</a></li>
-        <li><a href="#solutions">Solutions</a></li>
-        <li><a href="#resultats">Cas d'usage</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-
-      <a href="#contact" class="cta-btn">Lancer mon projet</a>
-
-      <button class="hamburger" id="hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <a href="#cases" class="btn-ghost" data-i18n="hero.cta.secondary">Nos réalisations</a>
     </div>
 
-    <div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Menu mobile">
-      <a href="#hero">Accueil</a>
-      <a href="#solutions">Solutions</a>
-      <a href="#resultats">Cas d'usage</a>
-      <a href="#apropos">À propos</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact" class="cta-btn">Lancer mon projet</a>
+    <!-- iPhone stage -->
+    <div class="hero-stage" aria-hidden="true">
+      <div class="float-card fc-1">
+        <div class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><b data-i18n="hero.float.1.t">Lead reçu</b><span data-i18n="hero.float.1.s">claire@studio.com · à l'instant</span></div>
+      </div>
+      <div class="float-card fc-2">
+        <div class="ic"><svg viewBox="0 0 24 24"><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg></div>
+        <div><b data-i18n="hero.float.2.t">Email envoyé</b><span data-i18n="hero.float.2.s">Workflow · 0,4s</span></div>
+      </div>
+      <div class="float-card fc-3">
+        <div class="ic"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <div><b data-i18n="hero.float.3.t">+ 38% conversion</b><span data-i18n="hero.float.3.s">Cette semaine</span></div>
+      </div>
+      <div class="iphone">
+        <div class="iphone-screen">
+          <div class="notch"></div>
+          <div class="statusbar">
+            <span>9:41</span>
+            <div class="icons">
+              <svg viewBox="0 0 18 12" fill="currentColor" width="16"><rect x="1" y="3" width="3" height="9" rx="1"/><rect x="6" y="1.5" width="3" height="10.5" rx="1" opacity=".7"/><rect x="11" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg>
+            </div>
+          </div>
+          <div class="app">
+            <div class="app-eyebrow" data-i18n="hero.badge">Studio · Bruxelles</div>
+            <div class="app-h">
+              <span data-i18n="phone.h.1">Votre business,</span>
+              <span class="em gradient-text" data-i18n="phone.h.2">en pilote auto.</span>
+            </div>
+            <div class="app-sub" data-i18n="phone.sub">Des pages qui convertissent. Des flux qui s'occupent du reste.</div>
+            <div class="app-card">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/></svg></div>
+              <div class="meta"><b data-i18n="phone.card.1.t">Landing page</b><span data-i18n="phone.card.1.s">Live · 99/100 perf</span></div>
+            </div>
+            <div class="app-card">
+              <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg></div>
+              <div class="meta"><b data-i18n="phone.card.2.t">Automation</b><span data-i18n="phone.card.2.s">14 tâches · auto</span></div>
+            </div>
+            <div class="app-cta" data-i18n="phone.cta">Lancer mon projet</div>
+          </div>
+        </div>
+      </div>
     </div>
-  </nav>
 
-  <!-- ═══ HERO ═══ -->
-  <section class="hero" id="hero">
-    <div class="hero-inner">
-
-      <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        Landing pages & Automatisation
-      </div>
-
-      <h1>Landing pages qui convertissent.<br><span class="accent">Tâches qui s'automatisent.</span></h1>
-
-      <p class="hero-sub">
-        Nous créons des landing pages sur-mesure et automatisons vos processus pour centraliser et optimiser votre business. Simple, rapide, efficace.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#contact" class="cta-btn">Lancer mon projet</a>
-        <a href="#resultats" class="btn-secondary">
-          Nos réalisations
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3.5 8h9M8.5 4l4 4-4 4"/>
-          </svg>
-        </a>
-      </div>
-
-      <div class="hero-metrics">
-        <div class="metric">
-          <div class="metric-value">100<span class="violet">%</span></div>
-          <div class="metric-label">Sur-mesure</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">Rapide</div>
-          <div class="metric-label">Livraison en quelques jours</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value">Humain</div>
-          <div class="metric-label">Accompagnement personnalisé</div>
-        </div>
-      </div>
-
+    <div class="hero-meta">
+      <div class="item"><b>72h</b><span data-i18n="meta.1">Premier prototype</span></div>
+      <div class="item"><b>1:1</b><span data-i18n="meta.2">Accompagnement humain</span></div>
+      <div class="item"><b>100%</b><span data-i18n="meta.3">Sur-mesure</span></div>
+      <div class="item"><b>∞</b><span data-i18n="meta.4">Itérations possibles</span></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══ SOLUTIONS ═══ -->
-  <section class="services" id="solutions">
-    <div class="services-inner">
-
-      <div class="section-label">Nos solutions</div>
-      <h2 class="section-heading">Deux expertises,<br>un seul objectif</h2>
-      <p class="section-desc">
-        Des landing pages qui convertissent et des automatisations qui vous font gagner du temps. Tout sur-mesure.
-      </p>
-
-      <div class="services-grid">
-
-        <!-- Card 1 — Création de landing pages -->
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-              <line x1="3" y1="9" x2="21" y2="9"/>
-              <line x1="9" y1="21" x2="9" y2="9"/>
-            </svg>
-          </div>
-          <h3>Création de landing pages</h3>
-          <p>Des pages sur-mesure au design premium, pensées pour convertir. Responsive, rapides et optimisées SEO.</p>
-        </div>
-
-        <!-- Card 2 — Refonte & optimisation -->
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 20h9"/>
-              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-            </svg>
-          </div>
-          <h3>Refonte & optimisation</h3>
-          <p>Amélioration de vos pages existantes : design, performance, conversion. On fait passer votre site au niveau supérieur.</p>
-        </div>
-
-        <!-- Card 3 — Automatisation des tâches -->
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
-              <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
-              <line x1="4" y1="4" x2="9" y2="9"/>
-            </svg>
-          </div>
-          <h3>Automatisation des tâches</h3>
-          <p>Emails, facturation, CRM, suivi client. On automatise tout ce qui vous prend du temps au quotidien.</p>
-        </div>
-
-        <!-- Card 4 — Centralisation des outils -->
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="2" width="8" height="8" rx="2"/>
-              <rect x="14" y="2" width="8" height="8" rx="2"/>
-              <rect x="2" y="14" width="8" height="8" rx="2"/>
-              <rect x="14" y="14" width="8" height="8" rx="2"/>
-              <line x1="10" y1="6" x2="14" y2="6"/>
-              <line x1="6" y1="10" x2="6" y2="14"/>
-              <line x1="18" y1="10" x2="18" y2="14"/>
-              <line x1="10" y1="18" x2="14" y2="18"/>
-            </svg>
-          </div>
-          <h3>Centralisation des outils</h3>
-          <p>Connexion de vos outils avec n8n, Make ou Zapier. Tout communique ensemble, plus de copier-coller.</p>
-        </div>
-
-        <!-- Card 5 — IA & Chatbots -->
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              <circle cx="9" cy="10" r="1" fill="currentColor"/>
-              <circle cx="15" cy="10" r="1" fill="currentColor"/>
-            </svg>
-          </div>
-          <h3>IA & Chatbots</h3>
-          <p>Chatbots intelligents, génération de contenu et réponses automatiques. L'IA au service de votre business.</p>
-        </div>
-
-        <!-- Card 6 — Systèmes no-code -->
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-            </svg>
-          </div>
-          <h3>Systèmes no-code</h3>
-          <p>Solutions simples et puissantes sans développeur. Rapides à mettre en place, faciles à maintenir, évolutives.</p>
-        </div>
-
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="section-head reveal">
+    <div class="eyebrow"><span class="dot"></span><span data-i18n="solutions.eyebrow">Solutions</span></div>
+    <h2 class="h-section"><span data-i18n="solutions.h.1">Deux expertises.</span> <span class="gradient-text" data-i18n="solutions.h.2">Une obsession.</span></h2>
+    <p class="lead" data-i18n="solutions.sub">Concevoir et automatiser. Pour que vous reveniez à l'essentiel : votre métier.</p>
+  </div>
+  <div class="bento">
+    <div class="tile tile-feature reveal glow-card">
+      <div>
+        <div class="tile-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/></svg></div>
+        <h3 data-i18n="tile.lp.t">Landing pages sur-mesure</h3>
+        <p data-i18n="tile.lp.s">Design premium, performance impeccable, copy qui parle au bon moment. Chaque pixel sert la conversion.</p>
+      </div>
+      <div class="mini-page" aria-hidden="true">
+        <div class="bar short"></div><div class="bar"></div><div class="bar short"></div>
+        <div class="bar btn"></div><div class="img"></div>
       </div>
     </div>
-  </section>
-
-  <!-- ═══ CE QUE NOUS FAISONS ═══ -->
-  <section class="projects" id="resultats">
-    <div class="projects-inner">
-
-      <div class="projects-header">
-        <div class="projects-header-text">
-          <div class="section-label">Cas d'usage</div>
-          <h2 class="section-heading">Ce que nous pouvons<br>faire pour vous</h2>
-          <p class="section-desc">Quelques exemples concrets de projets que nous réalisons pour simplifier et automatiser votre activité.</p>
-        </div>
-      </div>
-
-      <div class="results-grid">
-
-        <!-- Cas 1 — Landing page -->
-        <div class="result-card">
-          <div class="result-card-top">
-            <span class="result-tag">Landing page</span>
-            <h3>Landing page sur-mesure</h3>
-            <p>Une page de vente rapide, responsive et pensée pour convertir vos visiteurs en clients.</p>
-          </div>
-          <div class="result-card-bottom">
-            <div class="result-stat">
-              <div class="result-stat-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-              <span>Design unique & responsive</span>
-            </div>
-            <div class="result-stat">
-              <div class="result-stat-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-              <span>Optimisée pour la conversion</span>
-            </div>
-            <div class="result-gain">
-              <span class="result-gain-badge">Livraison rapide</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cas 2 — Automatisation -->
-        <div class="result-card">
-          <div class="result-card-top">
-            <span class="result-tag">Automatisation</span>
-            <h3>Automatisation de tâches</h3>
-            <p>Connexion de vos outils pour automatiser les tâches répétitives : emails, suivi, rappels, notifications.</p>
-          </div>
-          <div class="result-card-bottom">
-            <div class="result-stat">
-              <div class="result-stat-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-              <span>Emails & relances automatiques</span>
-            </div>
-            <div class="result-stat">
-              <div class="result-stat-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-              <span>Gain de temps au quotidien</span>
-            </div>
-            <div class="result-gain">
-              <span class="result-gain-badge">Sur-mesure</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Cas 3 — Centralisation -->
-        <div class="result-card">
-          <div class="result-card-top">
-            <span class="result-tag">Centralisation</span>
-            <h3>Centralisation des outils</h3>
-            <p>On connecte vos outils entre eux (n8n, Make, Zapier, Notion…) pour un workflow fluide et unifié.</p>
-          </div>
-          <div class="result-card-bottom">
-            <div class="result-stat">
-              <div class="result-stat-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></div>
-              <span>Outils connectés entre eux</span>
-            </div>
-            <div class="result-stat">
-              <div class="result-stat-icon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-              <span>Un seul workflow unifié</span>
-            </div>
-            <div class="result-gain">
-              <span class="result-gain-badge">No-code</span>
-            </div>
-          </div>
-        </div>
-
+    <div class="tile reveal glow-card">
+      <div>
+        <div class="tile-ic" style="background:rgba(255,107,107,.10)"><svg viewBox="0 0 24 24" stroke="#ff6b6b"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
+        <h3 data-i18n="tile.auto.t">Automatisation</h3>
+        <p data-i18n="tile.auto.s">Emails, factures, suivi, relances. Tout ce qui vole votre temps part en pilotage automatique.</p>
       </div>
     </div>
-  </section>
-
-  <!-- ═══ NOTRE MÉTHODE ═══ -->
-  <section class="about" id="apropos">
-    <div class="about-inner">
-
-      <div class="about-content">
-        <div class="section-label">Comment on travaille</div>
-        <h2 class="section-heading">Notre méthode</h2>
-        <p class="section-desc">
-          Nous nous déplaçons partout à Bruxelles pour échanger sur votre stratégie autour d'un café.
-        </p>
-
-        <div class="methode-timeline">
-          <div class="methode-step">
-            <div class="methode-number">1</div>
-            <div class="methode-icon">
-              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </div>
-            <h4>Analyse</h4>
-            <p>Immersion dans votre projet pour définir une stratégie sur mesure.</p>
-          </div>
-
-          <div class="methode-step">
-            <div class="methode-number">2</div>
-            <div class="methode-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
-            </div>
-            <h4>Design</h4>
-            <p>Conception d'une interface esthétique et d'un parcours utilisateur optimisé.</p>
-          </div>
-
-          <div class="methode-step">
-            <div class="methode-number">3</div>
-            <div class="methode-icon">
-              <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <h4>Développement</h4>
-            <p>Construction technique robuste utilisant les technologies les plus fiables.</p>
-          </div>
-
-          <div class="methode-step">
-            <div class="methode-number">4</div>
-            <div class="methode-icon">
-              <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            </div>
-            <h4>Lancement</h4>
-            <p>Mise en ligne et accompagnement pour assurer votre réussite.</p>
-          </div>
-        </div>
+    <div class="tile reveal glow-card" style="position:relative">
+      <div style="position:relative;z-index:2;max-width:55%">
+        <div class="tile-ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6h7M6 8.5v7M18 8.5v7M8.5 18h7"/></svg></div>
+        <h3 data-i18n="tile.cent.t">Centralisation</h3>
+        <p data-i18n="tile.cent.s">n8n, Make, Zapier, Notion, Airtable. Vos outils communiquent enfin entre eux.</p>
       </div>
-
+      <div class="workflow" aria-hidden="true">
+        <div class="node node-1"><span class="dot"></span>Form</div>
+        <div class="node node-2"><span class="dot"></span>Notion</div>
+        <div class="node node-3"><span class="dot"></span>Email</div>
+        <div class="node node-4"><span class="dot"></span>Slack</div>
+      </div>
     </div>
-  </section>
-
-  <!-- ═══ LANCER MON PROJET ═══ -->
-  <section class="contact" id="contact">
-    <div class="contact-inner">
-
-      <div class="contact-left">
-        <div class="section-label">Lancer mon projet</div>
-        <h2 class="section-heading">Parlez-nous de<br>votre projet</h2>
-        <p class="section-desc">
-          Répondez à 3 questions rapides pour qu'on comprenne votre besoin. On revient vers vous sous 24h avec un plan d'action concret.
-        </p>
-
-        <div class="contact-details">
-          <div class="contact-item">
-            <div class="contact-item-icon">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div class="contact-item-text">
-              <span>Email</span>
-              <a href="mailto:contact@flowa-agency.com">contact@flowa-agency.com</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-item-icon">
-              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="contact-item-text">
-              <span>Localisation</span>
-              <p>Bruxelles, Belgique</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="contact-socials">
-          <a href="https://instagram.com/flowa.agency" target="_blank" class="social-link" aria-label="Instagram">
-            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          </a>
-          <a href="https://linkedin.com/company/flowa" target="_blank" class="social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          </a>
-          <a href="https://x.com/flowa_agency" target="_blank" class="social-link" aria-label="Twitter">
-            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-        </div>
+    <div class="tile reveal glow-card">
+      <div>
+        <div class="tile-ic"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+        <h3 data-i18n="tile.refonte.t">Refonte</h3>
       </div>
-
-      <!-- ── Funnel multi-étapes ── -->
-      <div class="funnel" id="funnel">
-        <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" id="hpField">
-
-        <!-- Progress bar -->
-        <div class="funnel-progress">
-          <div class="funnel-progress-step active" data-step="1"></div>
-          <div class="funnel-progress-step" data-step="2"></div>
-          <div class="funnel-progress-step" data-step="3"></div>
-        </div>
-
-        <!-- ÉTAPE 1 — Service -->
-        <div class="funnel-step active" id="funnelStep1">
-          <h3>Quel est votre besoin ?</h3>
-          <p>Sélectionnez le service qui vous intéresse</p>
-          <div class="funnel-options" id="serviceOptions">
-            <div class="funnel-option" data-value="Création de landing page">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">Landing page sur-mesure</div>
-                <div class="funnel-option-desc">Page de vente optimisée pour la conversion</div>
-              </div>
-            </div>
-            <div class="funnel-option" data-value="Refonte & optimisation de site">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">Refonte & optimisation</div>
-                <div class="funnel-option-desc">Moderniser votre site existant</div>
-              </div>
-            </div>
-            <div class="funnel-option" data-value="Automatisation des tâches">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">Automatisation des tâches</div>
-                <div class="funnel-option-desc">Emails, relances, notifications auto</div>
-              </div>
-            </div>
-            <div class="funnel-option" data-value="Centralisation des outils">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">Centralisation des outils</div>
-                <div class="funnel-option-desc">n8n, Make, Zapier, Notion — tout connecté</div>
-              </div>
-            </div>
-            <div class="funnel-option" data-value="IA & Chatbots">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">IA & Chatbots</div>
-                <div class="funnel-option-desc">Chatbot intelligent pour vos prospects</div>
-              </div>
-            </div>
-            <div class="funnel-option" data-value="Autre / Je ne sais pas encore">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">Autre / Je ne sais pas encore</div>
-                <div class="funnel-option-desc">On en discute ensemble</div>
-              </div>
-            </div>
-          </div>
-          <div class="funnel-nav">
-            <button class="funnel-next" id="toStep2" disabled>Continuer →</button>
-          </div>
-        </div>
-
-        <!-- ÉTAPE 2 — Budget -->
-        <div class="funnel-step" id="funnelStep2">
-          <h3>Quel est votre budget ?</h3>
-          <p>Donnez-nous une idée pour adapter notre proposition</p>
-          <div class="funnel-options" id="budgetOptions">
-            <div class="funnel-option" data-value="< 500€">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">Moins de 500€</div>
-                <div class="funnel-option-desc">Projet simple, résultat rapide</div>
-              </div>
-            </div>
-            <div class="funnel-option" data-value="500€ - 1 500€">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">500€ — 1 500€</div>
-                <div class="funnel-option-desc">Landing page + automatisations de base</div>
-              </div>
-            </div>
-            <div class="funnel-option" data-value="1 500€ - 5 000€">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">1 500€ — 5 000€</div>
-                <div class="funnel-option-desc">Système complet sur-mesure</div>
-              </div>
-            </div>
-            <div class="funnel-option" data-value="Pas encore défini">
-              <div class="funnel-option-icon">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-              </div>
-              <div>
-                <div class="funnel-option-text">Pas encore défini</div>
-                <div class="funnel-option-desc">Je veux d'abord un devis</div>
-              </div>
-            </div>
-          </div>
-          <div class="funnel-nav">
-            <button class="funnel-back" id="backStep1">← Retour</button>
-            <button class="funnel-next" id="toStep3" disabled>Continuer →</button>
-          </div>
-        </div>
-
-        <!-- ÉTAPE 3 — Identité -->
-        <div class="funnel-step" id="funnelStep3">
-          <h3>Vos coordonnées</h3>
-          <p>Pour qu'on puisse vous recontacter</p>
-
-          <div class="funnel-group">
-            <label for="funnelName">Nom complet</label>
-            <input type="text" id="funnelName" placeholder="John Doe" required>
-          </div>
-
-          <div class="funnel-group">
-            <label for="funnelEmail">Email</label>
-            <input type="email" id="funnelEmail" placeholder="john@exemple.com" required>
-          </div>
-
-          <div class="funnel-group">
-            <label for="funnelPhone">Téléphone (optionnel)</label>
-            <input type="tel" id="funnelPhone" placeholder="+32 470 00 00 00">
-          </div>
-
-          <div class="funnel-error" id="funnelError"></div>
-          <div class="funnel-nav">
-            <button class="funnel-back" id="backStep2">← Retour</button>
-            <button class="funnel-submit" id="funnelSubmit">Envoyer ma demande</button>
-          </div>
-        </div>
-
-        <!-- Écran de succès -->
-        <div class="funnel-success" id="funnelSuccess">
-          <div class="funnel-success-icon">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <h3>Demande envoyée !</h3>
-          <p>Merci pour votre confiance. On analyse votre projet et on revient vers vous sous 24h.</p>
-        </div>
-      </div>
-
+      <p data-i18n="tile.refonte.s">Faire passer un site existant au niveau supérieur — design, vitesse, conversion.</p>
     </div>
-  </section>
+    <div class="tile reveal glow-card">
+      <div>
+        <div class="tile-ic" style="background:rgba(0,122,255,.10)"><svg viewBox="0 0 24 24" stroke="#007aff"><path d="M12 2L8 8h8l-4-6z"/><circle cx="12" cy="14" r="6"/><circle cx="9.5" cy="13" r="0.8" fill="#007aff"/><circle cx="14.5" cy="13" r="0.8" fill="#007aff"/></svg></div>
+        <h3 data-i18n="tile.ai.t">IA & Chatbots</h3>
+      </div>
+      <p data-i18n="tile.ai.s">Conversations intelligentes, contenu généré, réponses 24/7. L'IA qui travaille pour vous.</p>
+    </div>
+    <div class="tile reveal glow-card">
+      <div>
+        <div class="tile-ic" style="background:rgba(52,199,89,.10)"><svg viewBox="0 0 24 24" stroke="#34c759"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h3 data-i18n="tile.nocode.t">No-code</h3>
+      </div>
+      <p data-i18n="tile.nocode.s">Solutions évolutives, faciles à maintenir. Vous gardez la main, sans dépendre d'un dev.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- ═══ FOOTER ═══ -->
-  <footer class="footer">
-    <div class="footer-top">
-      <a href="#" class="logo" aria-label="Flowa — Accueil">
-        <span class="logo-text">Flowa</span>
-        <span class="logo-dot" aria-hidden="true"></span>
-      </a>
-      <ul class="footer-links" role="list">
-        <li><a href="#hero">Accueil</a></li>
-        <li><a href="#solutions">Solutions</a></li>
-        <li><a href="#resultats">Cas d'usage</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#contact">Contact</a></li>
+<!-- MÉTHODE -->
+<section id="method" style="background:#fff">
+  <div class="section-head reveal">
+    <div class="eyebrow"><span class="dot"></span><span data-i18n="method.eyebrow">Méthode</span></div>
+    <h2 class="h-section"><span data-i18n="method.h.1">Quatre étapes.</span><br><span class="gradient-text" data-i18n="method.h.2">Aucun détour.</span></h2>
+    <p class="lead" data-i18n="method.sub">Un café à Bruxelles, un plan clair, et on avance.</p>
+  </div>
+  <div class="method-timeline">
+    <div class="step-card reveal glow-card">
+      <div class="step-node"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-6h3v4zM3 19a2 2 0 002 2h1v-6H3v4z"/></svg></div>
+      <div class="step-badge" data-i18n="method.s1.no">01 · Écoute</div>
+      <h4 data-i18n="method.s1.t">Écouter</h4>
+      <p data-i18n="method.s1.s">On comprend votre business avant de proposer la moindre ligne de code.</p>
+    </div>
+    <div class="step-card reveal glow-card">
+      <div class="step-node"><svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+      <div class="step-badge" data-i18n="method.s2.no">02 · Design</div>
+      <h4 data-i18n="method.s2.t">Concevoir</h4>
+      <p data-i18n="method.s2.s">Maquettes, copy, parcours. Vous validez chaque étape avant la production.</p>
+    </div>
+    <div class="step-card reveal glow-card">
+      <div class="step-node"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <div class="step-badge" data-i18n="method.s3.no">03 · Build</div>
+      <h4 data-i18n="method.s3.t">Construire</h4>
+      <p data-i18n="method.s3.s">Code propre, automatisations testées. On livre vite, sans rogner sur la qualité.</p>
+    </div>
+    <div class="step-card reveal glow-card">
+      <div class="step-node"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/></svg></div>
+      <div class="step-badge" data-i18n="method.s4.no">04 · Launch</div>
+      <h4 data-i18n="method.s4.t">Lancer</h4>
+      <p data-i18n="method.s4.s">Mise en ligne, suivi, ajustements. Vous n'êtes jamais seul après le go-live.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CAS D'USAGE -->
+<section id="cases">
+  <div class="section-head reveal">
+    <div class="eyebrow"><span class="dot"></span><span data-i18n="cases.eyebrow">Cas d'usage</span></div>
+    <h2 class="h-section"><span data-i18n="cases.h.1">Ce qu'on peut</span> <span class="gradient-text" data-i18n="cases.h.2">construire pour vous.</span></h2>
+  </div>
+  <div class="results-grid">
+    <div class="result reveal glow-card">
+      <span class="tag" data-i18n="cases.1.tag">Landing page</span>
+      <h3 data-i18n="cases.1.t">Page de vente, optimisée</h3>
+      <p data-i18n="cases.1.s">Une page qui transforme l'attention en action. Responsive, rapide, claire.</p>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.1.f1">Design unique, fait main</span></div>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.1.f2">Performance & SEO inclus</span></div>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.1.f3">Livraison en quelques jours</span></div>
+    </div>
+    <div class="result reveal glow-card">
+      <span class="tag" data-i18n="cases.2.tag">Automatisation</span>
+      <h3 data-i18n="cases.2.t">Workflows qui travaillent</h3>
+      <p data-i18n="cases.2.s">Vos tâches répétitives s'exécutent toutes seules. Vous récupérez vos heures.</p>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.2.f1">Emails & relances auto</span></div>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.2.f2">Synchronisation entre outils</span></div>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.2.f3">Documentation claire</span></div>
+    </div>
+    <div class="result reveal glow-card">
+      <span class="tag" data-i18n="cases.3.tag">Système complet</span>
+      <h3 data-i18n="cases.3.t">L'écosystème, unifié</h3>
+      <p data-i18n="cases.3.s">Site, CRM, outils internes. Tout connecté. Plus de copier-coller.</p>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.3.f1">n8n · Make · Zapier</span></div>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.3.f2">Un seul tableau de bord</span></div>
+      <div class="stat"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.3.f3">Évolutif sans dépendance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / FUNNEL -->
+<section class="cta-section" id="contact">
+  <div class="cta-card reveal glow-card">
+    <div class="cta-left">
+      <div class="eyebrow"><span class="dot"></span><span data-i18n="cta.eyebrow">Démarrer</span></div>
+      <h2 class="h-section">
+        <span data-i18n="cta.h.1">Parlons de votre</span><br>
+        <span class="gradient-text" data-i18n="cta.h.2">prochaine étape.</span>
+      </h2>
+      <p class="lead" data-i18n="cta.sub">Trois questions. Vingt secondes. On revient sous 24h avec un plan clair.</p>
+      <div class="cta-meta">
+        <div class="cta-meta-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <span>contact@flowa-agency.com</span>
+        </div>
+        <div class="cta-meta-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <span data-i18n="cta.loc">Bruxelles, Belgique</span>
+        </div>
+        <div class="cta-meta-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <span data-i18n="cta.time">Réponse sous 24 heures</span>
+        </div>
+      </div>
+    </div>
+
+    <form class="funnel" id="funnelForm" autocomplete="off">
+      <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" id="hpField">
+      <div class="progress" aria-hidden="true">
+        <div class="seg active"></div><div class="seg"></div><div class="seg"></div>
+      </div>
+
+      <!-- Step 1 -->
+      <div class="step active" data-step="1">
+        <h3 data-i18n="funnel.s1.t">Quel est votre besoin ?</h3>
+        <p class="helper" data-i18n="funnel.s1.s">Choisissez ce qui vous correspond le mieux.</p>
+        <div class="options" id="opt-need">
+          <label class="option">
+            <input type="radio" name="need" value="Landing page sur-mesure" hidden>
+            <div class="opt-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+            <div class="opt-text"><b data-i18n="funnel.opt.lp.t">Landing page</b><span data-i18n="funnel.opt.lp.s">Page sur-mesure, prête à convertir</span></div>
+          </label>
+          <label class="option">
+            <input type="radio" name="need" value="Automatisation des tâches" hidden>
+            <div class="opt-ic"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
+            <div class="opt-text"><b data-i18n="funnel.opt.auto.t">Automatisation</b><span data-i18n="funnel.opt.auto.s">Du temps gagné, des erreurs en moins</span></div>
+          </label>
+          <label class="option">
+            <input type="radio" name="need" value="Système complet" hidden>
+            <div class="opt-ic"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6h7M6 8.5v7M18 8.5v7M8.5 18h7"/></svg></div>
+            <div class="opt-text"><b data-i18n="funnel.opt.full.t">Système complet</b><span data-i18n="funnel.opt.full.s">Site + automatisation + outils connectés</span></div>
+          </label>
+          <label class="option">
+            <input type="radio" name="need" value="Autre / À discuter" hidden>
+            <div class="opt-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 116 0c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.6" fill="currentColor"/></svg></div>
+            <div class="opt-text"><b data-i18n="funnel.opt.other.t">À discuter</b><span data-i18n="funnel.opt.other.s">On en parle ensemble</span></div>
+          </label>
+        </div>
+        <div class="step-nav">
+          <button type="button" class="btn-next" id="next1" disabled>
+            <span data-i18n="funnel.next">Continuer</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step" data-step="2">
+        <h3 data-i18n="funnel.s2.t">Et niveau budget ?</h3>
+        <p class="helper" data-i18n="funnel.s2.s">Pour qu'on vous propose la bonne approche.</p>
+        <div class="options" id="opt-budget">
+          <label class="option">
+            <input type="radio" name="budget" value="&lt; 500€" hidden>
+            <div class="opt-ic"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div class="opt-text"><b data-i18n="funnel.b1.t">Moins de 500€</b><span data-i18n="funnel.b1.s">Projet simple, vite fait</span></div>
+          </label>
+          <label class="option">
+            <input type="radio" name="budget" value="500 — 1500€" hidden>
+            <div class="opt-ic"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div class="opt-text"><b data-i18n="funnel.b2.t">500 — 1 500 €</b><span data-i18n="funnel.b2.s">Page + premières automatisations</span></div>
+          </label>
+          <label class="option">
+            <input type="radio" name="budget" value="1500 — 5000€" hidden>
+            <div class="opt-ic"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+            <div class="opt-text"><b data-i18n="funnel.b3.t">1 500 — 5 000 €</b><span data-i18n="funnel.b3.s">Système complet, sur-mesure</span></div>
+          </label>
+          <label class="option">
+            <input type="radio" name="budget" value="À définir" hidden>
+            <div class="opt-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 116 0c0 2-3 3-3 3"/></svg></div>
+            <div class="opt-text"><b data-i18n="funnel.b4.t">À définir</b><span data-i18n="funnel.b4.s">Je veux d'abord un devis clair</span></div>
+          </label>
+        </div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" id="back1" data-i18n="funnel.back">← Retour</button>
+          <button type="button" class="btn-next" id="next2" disabled>
+            <span data-i18n="funnel.next">Continuer</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step" data-step="3">
+        <h3 data-i18n="funnel.s3.t">On vous recontacte où ?</h3>
+        <p class="helper" data-i18n="funnel.s3.s">On revient sous 24h, pas de spam.</p>
+        <div class="input-group">
+          <label for="fName" data-i18n="funnel.name">Nom complet</label>
+          <input type="text" id="fName" name="name" placeholder="Claire Dubois" required>
+        </div>
+        <div class="input-group">
+          <label for="fEmail" data-i18n="funnel.email">Email</label>
+          <input type="email" id="fEmail" name="email" placeholder="claire@exemple.com" required>
+        </div>
+        <div class="input-group">
+          <label for="fPhone" data-i18n="funnel.phone">Téléphone (optionnel)</label>
+          <input type="tel" id="fPhone" name="phone" placeholder="+32 470 00 00 00">
+        </div>
+        <div class="funnel-err" id="funnelErr"></div>
+        <div class="step-nav">
+          <button type="button" class="btn-back" id="back2" data-i18n="funnel.back">← Retour</button>
+          <button type="submit" class="btn-next" id="funnelSubmit">
+            <span data-i18n="funnel.submit">Envoyer</span>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div class="funnel-success" id="funnelSuccess">
+        <div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3 data-i18n="funnel.success.t">C'est dans la boîte.</h3>
+        <p style="font-size:14.5px;color:var(--ink-3);max-width:300px;line-height:1.5" data-i18n="funnel.success.s">Merci. On revient vers vous sous 24h avec un plan d'action concret.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-top">
+      <a href="#" class="nav-logo"><span class="mark">Flowa</span><span class="pip"></span></a>
+      <ul class="foot-links" role="list">
+        <li><a href="#solutions" data-i18n="nav.solutions">Solutions</a></li>
+        <li><a href="#method" data-i18n="nav.method">Méthode</a></li>
+        <li><a href="#cases" data-i18n="nav.cases">Cas d'usage</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Flowa. Tous droits réservés.</p>
-      <div class="footer-bottom-links">
-        <a href="mentions-legales.html">Mentions légales</a>
-        <a href="confidentialite.html">Politique de confidentialité</a>
+    <div class="foot-bot">
+      <p>© 2026 Flowa · <span data-i18n="foot.tag">Bruxelles, sur-mesure.</span></p>
+      <div class="links">
+        <a href="mentions-legales.html" data-i18n="foot.legal">Mentions légales</a>
+        <a href="confidentialite.html" data-i18n="foot.privacy">Confidentialité</a>
       </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script>
-    // ── Scroll → fond cassé + ombre
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 10);
-    }, { passive: true });
+<script>
+/* ── Supabase ─────────────────────────────────────────── */
+const SUPABASE_URL      = 'https://oixsfogsntqexddjtkae.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_r6Htu6EQriJcxYd82wWmZg_0s37ieHv';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // ── Hamburger toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
+/* ── EmailJS ─────────────────────────────────────────── */
+emailjs.init('iyhod4iukdkaCdkyc');
 
-    hamburger.addEventListener('click', () => {
-      const isOpen = hamburger.classList.toggle('open');
-      mobileMenu.classList.toggle('open', isOpen);
-      hamburger.setAttribute('aria-expanded', isOpen);
-    });
+/* ── i18n ────────────────────────────────────────────── */
+const I18N = {
+  fr:{
+    "nav.solutions":"Solutions","nav.method":"Méthode","nav.cases":"Cas d'usage","nav.contact":"Contact","nav.cta":"Démarrer",
+    "hero.badge":"Studio · Bruxelles",
+    "hero.title.1":"Conçu pour","hero.title.2":"convertir.","hero.title.3":"Pensé pour","hero.title.4":"automatiser.",
+    "hero.sub":"Des landing pages qui transforment l'attention en action. Des automatisations qui rendent votre temps. Sur-mesure, sans bruit.",
+    "hero.cta.primary":"Lancer mon projet","hero.cta.secondary":"Nos réalisations",
+    "hero.float.1.t":"Lead reçu","hero.float.1.s":"claire@studio.com · à l'instant",
+    "hero.float.2.t":"Email envoyé","hero.float.2.s":"Workflow · 0,4s",
+    "hero.float.3.t":"+ 38% conversion","hero.float.3.s":"Cette semaine",
+    "phone.h.1":"Votre business,","phone.h.2":"en pilote auto.",
+    "phone.sub":"Des pages qui convertissent. Des flux qui s'occupent du reste.",
+    "phone.card.1.t":"Landing page","phone.card.1.s":"Live · 99/100 perf",
+    "phone.card.2.t":"Automation","phone.card.2.s":"14 tâches · auto",
+    "phone.cta":"Lancer mon projet",
+    "meta.1":"Premier prototype","meta.2":"Accompagnement humain","meta.3":"Sur-mesure","meta.4":"Itérations possibles",
+    "solutions.eyebrow":"Solutions","solutions.h.1":"Deux expertises.","solutions.h.2":"Une obsession.",
+    "solutions.sub":"Concevoir et automatiser. Pour que vous reveniez à l'essentiel : votre métier.",
+    "tile.lp.t":"Landing pages sur-mesure","tile.lp.s":"Design premium, performance impeccable, copy qui parle au bon moment. Chaque pixel sert la conversion.",
+    "tile.auto.t":"Automatisation","tile.auto.s":"Emails, factures, suivi, relances. Tout ce qui vole votre temps part en pilotage automatique.",
+    "tile.cent.t":"Centralisation","tile.cent.s":"n8n, Make, Zapier, Notion, Airtable. Vos outils communiquent enfin entre eux.",
+    "tile.refonte.t":"Refonte","tile.refonte.s":"Faire passer un site existant au niveau supérieur — design, vitesse, conversion.",
+    "tile.ai.t":"IA & Chatbots","tile.ai.s":"Conversations intelligentes, contenu généré, réponses 24/7. L'IA qui travaille pour vous.",
+    "tile.nocode.t":"No-code","tile.nocode.s":"Solutions évolutives, faciles à maintenir. Vous gardez la main, sans dépendre d'un dev.",
+    "method.eyebrow":"Méthode","method.h.1":"Quatre étapes.","method.h.2":"Aucun détour.",
+    "method.sub":"Un café à Bruxelles, un plan clair, et on avance.",
+    "method.s1.no":"01 · Écoute","method.s1.t":"Écouter","method.s1.s":"On comprend votre business avant de proposer la moindre ligne de code.",
+    "method.s2.no":"02 · Design","method.s2.t":"Concevoir","method.s2.s":"Maquettes, copy, parcours. Vous validez chaque étape avant la production.",
+    "method.s3.no":"03 · Build","method.s3.t":"Construire","method.s3.s":"Code propre, automatisations testées. On livre vite, sans rogner sur la qualité.",
+    "method.s4.no":"04 · Launch","method.s4.t":"Lancer","method.s4.s":"Mise en ligne, suivi, ajustements. Vous n'êtes jamais seul après le go-live.",
+    "cases.eyebrow":"Cas d'usage","cases.h.1":"Ce qu'on peut","cases.h.2":"construire pour vous.",
+    "cases.1.tag":"Landing page","cases.1.t":"Page de vente, optimisée","cases.1.s":"Une page qui transforme l'attention en action. Responsive, rapide, claire.",
+    "cases.1.f1":"Design unique, fait main","cases.1.f2":"Performance & SEO inclus","cases.1.f3":"Livraison en quelques jours",
+    "cases.2.tag":"Automatisation","cases.2.t":"Workflows qui travaillent","cases.2.s":"Vos tâches répétitives s'exécutent toutes seules. Vous récupérez vos heures.",
+    "cases.2.f1":"Emails & relances auto","cases.2.f2":"Synchronisation entre outils","cases.2.f3":"Documentation claire",
+    "cases.3.tag":"Système complet","cases.3.t":"L'écosystème, unifié","cases.3.s":"Site, CRM, outils internes. Tout connecté. Plus de copier-coller.",
+    "cases.3.f1":"n8n · Make · Zapier","cases.3.f2":"Un seul tableau de bord","cases.3.f3":"Évolutif sans dépendance",
+    "cta.eyebrow":"Démarrer","cta.h.1":"Parlons de votre","cta.h.2":"prochaine étape.",
+    "cta.sub":"Trois questions. Vingt secondes. On revient sous 24h avec un plan clair.",
+    "cta.loc":"Bruxelles, Belgique","cta.time":"Réponse sous 24 heures",
+    "funnel.s1.t":"Quel est votre besoin ?","funnel.s1.s":"Choisissez ce qui vous correspond le mieux.",
+    "funnel.opt.lp.t":"Landing page","funnel.opt.lp.s":"Page sur-mesure, prête à convertir",
+    "funnel.opt.auto.t":"Automatisation","funnel.opt.auto.s":"Du temps gagné, des erreurs en moins",
+    "funnel.opt.full.t":"Système complet","funnel.opt.full.s":"Site + automatisation + outils connectés",
+    "funnel.opt.other.t":"À discuter","funnel.opt.other.s":"On en parle ensemble",
+    "funnel.s2.t":"Et niveau budget ?","funnel.s2.s":"Pour qu'on vous propose la bonne approche.",
+    "funnel.b1.t":"Moins de 500€","funnel.b1.s":"Projet simple, vite fait",
+    "funnel.b2.t":"500 — 1 500 €","funnel.b2.s":"Page + premières automatisations",
+    "funnel.b3.t":"1 500 — 5 000 €","funnel.b3.s":"Système complet, sur-mesure",
+    "funnel.b4.t":"À définir","funnel.b4.s":"Je veux d'abord un devis clair",
+    "funnel.s3.t":"On vous recontacte où ?","funnel.s3.s":"On revient sous 24h, pas de spam.",
+    "funnel.name":"Nom complet","funnel.email":"Email","funnel.phone":"Téléphone (optionnel)",
+    "funnel.next":"Continuer","funnel.back":"← Retour","funnel.submit":"Envoyer",
+    "funnel.success.t":"C'est dans la boîte.","funnel.success.s":"Merci. On revient vers vous sous 24h avec un plan d'action concret.",
+    "foot.tag":"Bruxelles, sur-mesure.","foot.legal":"Mentions légales","foot.privacy":"Confidentialité"
+  },
+  en:{
+    "nav.solutions":"Solutions","nav.method":"Method","nav.cases":"Use cases","nav.contact":"Contact","nav.cta":"Start",
+    "hero.badge":"Studio · Brussels",
+    "hero.title.1":"Built to","hero.title.2":"convert.","hero.title.3":"Designed to","hero.title.4":"automate.",
+    "hero.sub":"Landing pages that turn attention into action. Automations that hand you back your time. Tailor-made, no noise.",
+    "hero.cta.primary":"Start my project","hero.cta.secondary":"Our work",
+    "hero.float.1.t":"Lead received","hero.float.1.s":"claire@studio.com · just now",
+    "hero.float.2.t":"Email sent","hero.float.2.s":"Workflow · 0.4s",
+    "hero.float.3.t":"+ 38% conversion","hero.float.3.s":"This week",
+    "phone.h.1":"Your business,","phone.h.2":"on autopilot.",
+    "phone.sub":"Pages that convert. Flows that handle the rest.",
+    "phone.card.1.t":"Landing page","phone.card.1.s":"Live · 99/100 perf",
+    "phone.card.2.t":"Automation","phone.card.2.s":"14 tasks · auto",
+    "phone.cta":"Start my project",
+    "meta.1":"First prototype","meta.2":"Hands-on support","meta.3":"Tailor-made","meta.4":"Endless iterations",
+    "solutions.eyebrow":"Solutions","solutions.h.1":"Two expertises.","solutions.h.2":"One obsession.",
+    "solutions.sub":"Design and automate. So you can get back to what matters — your craft.",
+    "tile.lp.t":"Tailor-made landing pages","tile.lp.s":"Premium design, flawless performance, copy that speaks at the right moment. Every pixel earns its keep.",
+    "tile.auto.t":"Automation","tile.auto.s":"Emails, invoicing, follow-ups, reminders. Everything that steals your time, on autopilot.",
+    "tile.cent.t":"Centralization","tile.cent.s":"n8n, Make, Zapier, Notion, Airtable. Your tools finally talk to each other.",
+    "tile.refonte.t":"Redesign","tile.refonte.s":"Take an existing site to the next level — design, speed, conversion.",
+    "tile.ai.t":"AI & Chatbots","tile.ai.s":"Smart conversations, generated content, 24/7 answers. AI that works for you.",
+    "tile.nocode.t":"No-code","tile.nocode.s":"Scalable solutions, easy to maintain. You stay in control, no dev required.",
+    "method.eyebrow":"Method","method.h.1":"Four steps.","method.h.2":"No detours.",
+    "method.sub":"A coffee in Brussels, a clear plan, and we ship.",
+    "method.s1.no":"01 · Listen","method.s1.t":"Listen","method.s1.s":"We understand your business before proposing a single line of code.",
+    "method.s2.no":"02 · Design","method.s2.t":"Design","method.s2.s":"Mockups, copy, journeys. You sign off on every step before production.",
+    "method.s3.no":"03 · Build","method.s3.t":"Build","method.s3.s":"Clean code, tested automations. We ship fast — without cutting corners.",
+    "method.s4.no":"04 · Launch","method.s4.t":"Launch","method.s4.s":"Go-live, monitoring, tweaks. You're never alone after launch.",
+    "cases.eyebrow":"Use cases","cases.h.1":"What we can","cases.h.2":"build for you.",
+    "cases.1.tag":"Landing page","cases.1.t":"Sales page, optimized","cases.1.s":"A page that turns attention into action. Responsive, fast, clear.",
+    "cases.1.f1":"Unique, hand-made design","cases.1.f2":"Performance & SEO included","cases.1.f3":"Delivered in days",
+    "cases.2.tag":"Automation","cases.2.t":"Workflows that work","cases.2.s":"Your repetitive tasks run themselves. You get your hours back.",
+    "cases.2.f1":"Auto emails & follow-ups","cases.2.f2":"Tools synced together","cases.2.f3":"Clean documentation",
+    "cases.3.tag":"Full system","cases.3.t":"The ecosystem, unified","cases.3.s":"Site, CRM, internal tools. All connected. No more copy-paste.",
+    "cases.3.f1":"n8n · Make · Zapier","cases.3.f2":"One unified dashboard","cases.3.f3":"Scalable, no lock-in",
+    "cta.eyebrow":"Start","cta.h.1":"Let's talk about","cta.h.2":"your next step.",
+    "cta.sub":"Three questions. Twenty seconds. We come back within 24h with a clear plan.",
+    "cta.loc":"Brussels, Belgium","cta.time":"Reply within 24 hours",
+    "funnel.s1.t":"What do you need?","funnel.s1.s":"Pick what fits best.",
+    "funnel.opt.lp.t":"Landing page","funnel.opt.lp.s":"Custom page, ready to convert",
+    "funnel.opt.auto.t":"Automation","funnel.opt.auto.s":"Time gained, errors gone",
+    "funnel.opt.full.t":"Full system","funnel.opt.full.s":"Site + automation + connected tools",
+    "funnel.opt.other.t":"Not sure yet","funnel.opt.other.s":"Let's talk it through",
+    "funnel.s2.t":"What's your budget?","funnel.s2.s":"So we suggest the right approach.",
+    "funnel.b1.t":"Under €500","funnel.b1.s":"Simple project, quick turnaround",
+    "funnel.b2.t":"€500 — €1,500","funnel.b2.s":"Page + first automations",
+    "funnel.b3.t":"€1,500 — €5,000","funnel.b3.s":"Full custom system",
+    "funnel.b4.t":"Not sure","funnel.b4.s":"I'd like a clear quote first",
+    "funnel.s3.t":"Where should we reach you?","funnel.s3.s":"We reply within 24h. No spam.",
+    "funnel.name":"Full name","funnel.email":"Email","funnel.phone":"Phone (optional)",
+    "funnel.next":"Continue","funnel.back":"← Back","funnel.submit":"Send",
+    "funnel.success.t":"All set.","funnel.success.s":"Thanks. We'll be in touch within 24h with a concrete plan.",
+    "foot.tag":"Brussels · tailor-made.","foot.legal":"Legal","foot.privacy":"Privacy"
+  }
+};
 
-    // ── Fermer le menu au clic sur un lien mobile
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-      });
-    });
+let currentLang = localStorage.getItem('flowa-lang') || 'fr';
+function applyLang(lang){
+  currentLang = lang;
+  localStorage.setItem('flowa-lang', lang);
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if(I18N[lang][k] !== undefined) el.textContent = I18N[lang][k];
+  });
+  const ph = {fName:{fr:'Claire Dubois',en:'Claire Smith'},fEmail:{fr:'claire@exemple.com',en:'claire@example.com'},fPhone:{fr:'+32 470 00 00 00',en:'+32 470 00 00 00'}};
+  Object.entries(ph).forEach(([id,p])=>{ const el=document.getElementById(id); if(el) el.placeholder=p[lang]; });
+  document.getElementById('lang-fr').classList.toggle('active', lang==='fr');
+  document.getElementById('lang-fr').setAttribute('aria-pressed', lang==='fr');
+  document.getElementById('lang-en').classList.toggle('active', lang==='en');
+  document.getElementById('lang-en').setAttribute('aria-pressed', lang==='en');
+}
+document.getElementById('lang-fr').addEventListener('click', ()=>applyLang('fr'));
+document.getElementById('lang-en').addEventListener('click', ()=>applyLang('en'));
+applyLang(currentLang);
 
-    // ── Scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
+/* ── Nav scroll ───────────────────────────────────────── */
+window.addEventListener('scroll', ()=>{ document.getElementById('nav').classList.toggle('scrolled', window.scrollY>16); },{passive:true});
 
-    document.querySelectorAll('.service-card').forEach((card, i) => {
-      card.style.transitionDelay = `${i * 0.1}s`;
-      observer.observe(card);
-    });
-
-    document.querySelectorAll('.result-card').forEach((card, i) => {
-      card.style.transitionDelay = `${i * 0.12}s`;
-      observer.observe(card);
-    });
-
-    document.querySelectorAll('.methode-step').forEach((step, i) => {
-      step.style.transitionDelay = `${i * 0.15}s`;
-      observer.observe(step);
-    });
-
-    document.querySelectorAll('.about-content, .contact-left, .funnel').forEach(el => {
-      observer.observe(el);
-    });
-
-    // ── Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
-    });
-
-    // ── Supabase client
-    const SUPABASE_URL      = 'https://oixsfogsntqexddjtkae.supabase.co';
-    const SUPABASE_ANON_KEY = 'sb_publishable_r6Htu6EQriJcxYd82wWmZg_0s37ieHv';
-
-    const supabaseConfigured =
-      SUPABASE_URL !== 'YOUR_SUPABASE_URL' &&
-      SUPABASE_ANON_KEY !== 'YOUR_SUPABASE_ANON_KEY' &&
-      typeof window.supabase !== 'undefined';
-
-    const sb = supabaseConfigured
-      ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
-      : null;
-
-    // ── Funnel multi-étapes
-    const funnel = {
-      currentStep: 1,
-      data: { service: '', budget: '', full_name: '', email: '', phone: '' },
-
-      steps: [null, document.getElementById('funnelStep1'), document.getElementById('funnelStep2'), document.getElementById('funnelStep3')],
-      progressBars: document.querySelectorAll('.funnel-progress-step'),
-      successEl: document.getElementById('funnelSuccess'),
-      errorEl: document.getElementById('funnelError'),
-
-      goTo(step) {
-        // Hide all steps
-        this.steps.forEach((el, i) => { if (el) el.classList.remove('active'); });
-        this.successEl.classList.remove('active');
-
-        // Show target step
-        this.currentStep = step;
-        if (this.steps[step]) this.steps[step].classList.add('active');
-
-        // Update progress
-        this.progressBars.forEach((bar, i) => {
-          bar.classList.remove('active', 'done');
-          if (i + 1 < step) bar.classList.add('done');
-          if (i + 1 === step) bar.classList.add('active');
-        });
-      },
-
-      showSuccess() {
-        this.steps.forEach((el) => { if (el) el.classList.remove('active'); });
-        this.progressBars.forEach(bar => bar.classList.add('done'));
-        this.successEl.classList.add('active');
-      },
-
-      showError(msg) {
-        this.errorEl.textContent = msg;
-        this.errorEl.classList.add('show');
-        setTimeout(() => this.errorEl.classList.remove('show'), 5000);
-      }
-    };
-
-    // ── Option selection (service & budget)
-    function setupOptionGroup(containerId, dataKey, nextBtnId) {
-      const container = document.getElementById(containerId);
-      const nextBtn = document.getElementById(nextBtnId);
-      if (!container || !nextBtn) return;
-
-      container.querySelectorAll('.funnel-option').forEach(option => {
-        option.addEventListener('click', () => {
-          container.querySelectorAll('.funnel-option').forEach(o => o.classList.remove('selected'));
-          option.classList.add('selected');
-          funnel.data[dataKey] = option.dataset.value;
-          nextBtn.disabled = false;
-        });
-      });
+/* ── Reveal ───────────────────────────────────────────── */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      e.target.style.transitionDelay = (e.target.dataset.delay||(i*60))+'ms';
+      e.target.classList.add('in');
+      io.unobserve(e.target);
     }
+  });
+},{threshold:0.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{ el.dataset.delay=(i%4)*80; io.observe(el); });
 
-    setupOptionGroup('serviceOptions', 'service', 'toStep2');
-    setupOptionGroup('budgetOptions', 'budget', 'toStep3');
+/* ── Funnel ───────────────────────────────────────────── */
+const fSteps = document.querySelectorAll('#funnelForm .step');
+const fSegs  = document.querySelectorAll('#funnelForm .progress .seg');
+const fData  = {need:null, budget:null};
 
-    // ── Navigation buttons
-    document.getElementById('toStep2')?.addEventListener('click', () => funnel.goTo(2));
-    document.getElementById('toStep3')?.addEventListener('click', () => funnel.goTo(3));
-    document.getElementById('backStep1')?.addEventListener('click', () => funnel.goTo(1));
-    document.getElementById('backStep2')?.addEventListener('click', () => funnel.goTo(2));
+function goTo(n){
+  fSteps.forEach(s=>s.classList.toggle('active', +s.dataset.step===n));
+  fSegs.forEach((s,i)=>s.classList.toggle('active', i<n));
+}
+function selectOption(group, val){
+  fData[group] = val;
+  const cid = group==='need'?'opt-need':'opt-budget';
+  document.getElementById(cid).querySelectorAll('.option').forEach(o=>{
+    o.classList.toggle('selected', o.querySelector('input').value===val);
+  });
+  if(group==='need')   document.getElementById('next1').disabled=false;
+  if(group==='budget') document.getElementById('next2').disabled=false;
+}
+document.getElementById('opt-need').addEventListener('click', e=>{
+  const o=e.target.closest('.option'); if(o) selectOption('need', o.querySelector('input').value);
+});
+document.getElementById('opt-budget').addEventListener('click', e=>{
+  const o=e.target.closest('.option'); if(o) selectOption('budget', o.querySelector('input').value);
+});
+document.getElementById('next1').addEventListener('click', ()=>goTo(2));
+document.getElementById('back1').addEventListener('click', ()=>goTo(1));
+document.getElementById('next2').addEventListener('click', ()=>goTo(3));
+document.getElementById('back2').addEventListener('click', ()=>goTo(2));
 
-    // ── Submit (step 3)
-    const submitBtn = document.getElementById('funnelSubmit');
-    submitBtn?.addEventListener('click', async () => {
-      const hp = document.getElementById('hpField');
-      if (hp && hp.value.trim() !== '') {
-        funnel.showSuccess();
-        return;
-      }
+/* ── Submit → Supabase + EmailJS ─────────────────────── */
+document.getElementById('funnelForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  if(document.getElementById('hpField').value) return;
 
-      const name  = document.getElementById('funnelName').value.trim();
-      const email = document.getElementById('funnelEmail').value.trim();
-      const phone = document.getElementById('funnelPhone').value.trim();
+  const name  = document.getElementById('fName').value.trim();
+  const email = document.getElementById('fEmail').value.trim();
+  const phone = document.getElementById('fPhone').value.trim();
+  const errEl = document.getElementById('funnelErr');
 
-      if (!name || !email) {
-        funnel.showError('Merci de remplir votre nom et email.');
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        funnel.showError('Adresse email invalide.');
-        return;
-      }
+  if(!name || !email){
+    errEl.textContent = currentLang==='fr' ? 'Merci de remplir votre nom et email.' : 'Please fill in your name and email.';
+    errEl.style.display='block'; return;
+  }
+  errEl.style.display='none';
 
-      if (!supabaseConfigured) {
-        funnel.showError('Formulaire non configuré. Contactez-nous à contact@flowa-agency.com');
-        return;
-      }
+  const btn = document.getElementById('funnelSubmit');
+  btn.disabled=true;
+  btn.querySelector('span').textContent = currentLang==='fr' ? 'Envoi...' : 'Sending...';
 
-      // Split name into first/last
-      const nameParts = name.split(' ');
-      const firstName = nameParts[0];
-      const lastName  = nameParts.slice(1).join(' ') || '-';
+  const parts = name.split(' ');
+  const firstName = parts[0], lastName = parts.slice(1).join(' ') || '-';
 
-      submitBtn.disabled = true;
-      const originalText = submitBtn.textContent;
-      submitBtn.textContent = 'Envoi en cours…';
-
-      try {
-        const { error } = await sb.from('leads').insert([{
-          first_name: firstName,
-          last_name:  lastName,
-          email:      email,
-          phone:      phone || null,
-          service:    funnel.data.service,
-          budget:     funnel.data.budget,
-          message:    `Service: ${funnel.data.service} | Budget: ${funnel.data.budget}`,
-        }]);
-        if (error) throw error;
-
-        // Notif email via EmailJS (fire & forget — on n'attend pas la réponse)
-        try {
-          emailjs.send('service_0itl689', 'template_8da5ipm', {
-            name:    name,
-            email:   email,
-            phone:   phone || 'Non renseigné',
-            service: funnel.data.service,
-            budget:  funnel.data.budget,
-          }, 'iyhod4iukdkaCdkyc');
-        } catch (emailErr) {
-          console.warn('[Flowa] EmailJS error (non-blocking):', emailErr);
-        }
-
-        funnel.showSuccess();
-      } catch (err) {
-        console.error('[Flowa] Supabase insert error:', err);
-        funnel.showError('Une erreur est survenue. Réessayez ou écrivez-nous à contact@flowa-agency.com');
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-      }
+  try {
+    await sb.from('leads').insert([{
+      first_name:firstName, last_name:lastName,
+      email, phone:phone||null,
+      service:fData.need, budget:fData.budget,
+      message:`Service: ${fData.need} | Budget: ${fData.budget}`,
+      status:'new'
+    }]);
+    await emailjs.send('service_0itl689','template_8da5ipm',{
+      name, email, phone:phone||'Non renseigné',
+      service:fData.need, budget:fData.budget
     });
+    if(typeof gtag!=='undefined') gtag('event','lead_submitted',{service:fData.need,budget:fData.budget});
+    fSteps.forEach(s=>s.classList.remove('active'));
+    fSegs.forEach(s=>s.classList.add('active'));
+    document.getElementById('funnelSuccess').classList.add('shown');
+  } catch(err){
+    console.error(err);
+    errEl.textContent = currentLang==='fr' ? 'Une erreur est survenue. Réessayez ou contactez-nous directement.' : 'Something went wrong. Please try again.';
+    errEl.style.display='block';
+    btn.disabled=false;
+    btn.querySelector('span').textContent = I18N[currentLang]['funnel.submit'];
+  }
+});
 
-    // ── Clic sur méthode / services / cas d'usage → scroll vers le funnel
-    function scrollToFunnel() {
-      const contactSection = document.getElementById('contact');
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      funnel.goTo(1);
-    }
+/* ── Glow card ─────────────────────────────────────────── */
+document.querySelectorAll('.glow-card').forEach(c=>{
+  c.addEventListener('pointermove', e=>{
+    const r=c.getBoundingClientRect();
+    c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+  });
+  c.addEventListener('pointerleave', ()=>{ c.style.removeProperty('--mx'); c.style.removeProperty('--my'); });
+});
 
-    document.querySelectorAll('.methode-step, .service-card, .result-card').forEach(el => {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', scrollToFunnel);
-    });
-  </script>
+/* ── Typewriter ─────────────────────────────────────────── */
+(function(){
+  const el=document.querySelector('.hero-sub');
+  if(!el) return;
+  const phrases={
+    fr:["Des landing pages qui transforment l'attention en action.","Des automatisations qui rendent votre temps.","Des systèmes sur-mesure, sans bruit.","Du design pensé pour convertir."],
+    en:["Landing pages that turn attention into action.","Automations that give your time back.","Tailor-made systems, no noise.","Design crafted to convert."]
+  };
+  el.innerHTML='<span class="tw-text"></span><span class="tw-caret" aria-hidden="true"></span>';
+  const txt=el.querySelector('.tw-text');
+  el.removeAttribute('data-i18n');
+  const getLang=()=>document.documentElement.lang==='en'?'en':'fr';
+  let pi=0,ci=0,del=false;
+  function tick(){
+    const list=phrases[getLang()], cur=list[pi%list.length];
+    if(!del){ ci++; txt.textContent=cur.slice(0,ci); if(ci===cur.length){del=true;return setTimeout(tick,1800);} setTimeout(tick,38+Math.random()*30); }
+    else    { ci--; txt.textContent=cur.slice(0,ci); if(ci===0){del=false;pi++;return setTimeout(tick,320);} setTimeout(tick,18); }
+  }
+  setTimeout(tick,900);
+})();
 
+/* ── Spring tap ─────────────────────────────────────────── */
+document.querySelectorAll('.option,.btn-primary,.btn-ghost,.btn-pill,.btn-next,.tile,.step-card,.result,.float-card').forEach(el=>{
+  el.addEventListener('pointerdown', ()=>el.style.transform='scale(0.98)');
+  el.addEventListener('pointerup',   ()=>el.style.transform='');
+  el.addEventListener('pointerleave',()=>el.style.transform='');
+});
+
+/* ── Cards → funnel ─────────────────────────────────────── */
+document.querySelectorAll('.result,.tile,.step-card').forEach(el=>{
+  el.addEventListener('click', ()=>{
+    document.getElementById('contact').scrollIntoView({behavior:'smooth',block:'start'});
+    goTo(1);
+  });
+});
+</script>
 </body>
 </html>
