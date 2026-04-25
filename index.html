@@ -771,6 +771,53 @@ section{ padding: 120px 24px; position: relative; }
 .success .check svg{ width: 26px; height: 26px; stroke: #fff; fill: none; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 @keyframes pop{ 0%{ transform: scale(0); } 60%{ transform: scale(1.15); } 100%{ transform: scale(1); } }
 
+/* ─── Contact strip ──────────────────────────────────── */
+.contact-strip{
+  padding: 80px 24px;
+  background: #fff;
+  border-top: 1px solid var(--hairline);
+}
+.contact-strip-inner{
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px;
+  align-items: center;
+}
+.contact-strip-text .eyebrow{ margin-bottom: 14px; }
+.contact-strip-text h2{ margin-bottom: 14px; }
+.contact-strip-text p.lead{ max-width: 360px; }
+
+.contact-strip-links{
+  display: flex; flex-direction: column; gap: 14px;
+}
+.contact-item{
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 20px;
+  background: var(--bg);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  text-decoration: none; color: inherit;
+  transition: background .25s ease, border-color .25s ease, transform .3s var(--spring), box-shadow .3s ease;
+}
+.contact-item:not(.no-link):hover{
+  background: var(--bg-elevated);
+  border-color: rgba(123,47,190,0.25);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.contact-ic{
+  width: 44px; height: 44px; border-radius: 12px;
+  background: rgba(123,47,190,0.08);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-ic svg{ width: 20px; height: 20px; stroke: var(--violet); }
+.contact-item b{ display: block; font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; }
+.contact-item span{ font-size: 13px; color: var(--ink-3); }
+
+@media (max-width: 768px){
+  .contact-strip-inner{ grid-template-columns: 1fr; gap: 36px; }
+}
+
 /* ─── Footer ─────────────────────────────────────────── */
 footer{
   padding: 48px 24px 32px;
@@ -1285,6 +1332,46 @@ footer{
         <p style="font-size:14.5px;color:var(--ink-3);max-width:300px;line-height:1.5;" data-i18n="funnel.success.s">Merci. On revient vers vous sous 24h avec un plan d'action concret.</p>
       </div>
     </form>
+  </div>
+</section>
+
+<!-- ═════ NOUS CONTACTER ═════ -->
+<section class="contact-strip">
+  <div class="contact-strip-inner">
+    <div class="contact-strip-text">
+      <span class="eyebrow"><span class="dot"></span><span>Contact</span></span>
+      <h2 class="h-section">Nous <span class="gradient-text">contacter</span></h2>
+      <p class="lead">Une question, un projet, une idée ? On vous répond sous 24h.</p>
+    </div>
+    <div class="contact-strip-links">
+      <a href="mailto:contact@flowa-agency.com" class="contact-item">
+        <div class="contact-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div>
+          <b>Email</b>
+          <span>contact@flowa-agency.com</span>
+        </div>
+      </a>
+      <a href="#contact" class="contact-item">
+        <div class="contact-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        </div>
+        <div>
+          <b>Formulaire</b>
+          <span>Démarrer un projet</span>
+        </div>
+      </a>
+      <div class="contact-item no-link">
+        <div class="contact-ic">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <b>Localisation</b>
+          <span>Bruxelles, Belgique</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
