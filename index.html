@@ -441,6 +441,7 @@ section{ padding: 120px 24px; position: relative; }
 .bento{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
   gap: 18px;
   max-width: 1180px; margin: 0 auto;
 }
@@ -454,6 +455,7 @@ section{ padding: 120px 24px; position: relative; }
   box-shadow: var(--shadow-sm);
   transition: transform .35s var(--spring), box-shadow .35s var(--ease-ios), border-color .25s ease;
   display: flex; flex-direction: column; gap: 12px;
+  min-height: 200px;
 }
 .tile:hover{
   transform: translateY(-4px);
