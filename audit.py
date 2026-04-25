@@ -184,7 +184,6 @@ with sync_playwright() as p:
     if first_opt:
         first_opt.click()
         page2.wait_for_timeout(400)
-        # Now click the enabled "Continuer" button
         to_step2 = page2.query_selector("#toStep2")
         if to_step2:
             to_step2.click()
@@ -226,6 +225,8 @@ with sync_playwright() as p:
     ok("Champ nom présent à l'étape 3") if fname else issue("Champ #funnelName introuvable à l'étape 3")
     ok("Champ email présent à l'étape 3") if email else issue("Champ #funnelEmail introuvable à l'étape 3")
     ok("Bouton submit présent à l'étape 3") if submit_btn else issue("Bouton #funnelSubmit introuvable à l'étape 3")
+
+    # Screenshot funnel step 3
 
     # Screenshot funnel step 3
     page2.screenshot(path=f"{OUT}/funnel_step3.png")
