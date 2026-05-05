@@ -640,6 +640,41 @@ section{ padding: 120px 24px; position: relative; }
 .result .stat:last-child{ border-bottom: 0; }
 .result .stat svg{ width: 16px; height: 16px; stroke: var(--violet); fill: none; stroke-width: 1.8; flex-shrink: 0; }
 
+/* ─── Interlude copy ─────────────────────────────────── */
+.interlude{
+  padding: 64px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1180px; margin: 0 auto;
+  gap: 32px;
+}
+.interlude-text{
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1.1; color: var(--ink);
+}
+.interlude-grad{
+  background: var(--accent-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.interlude-cta{
+  flex-shrink: 0;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 28px;
+  background: var(--ink); color: #fff;
+  border-radius: 999px; text-decoration: none;
+  font-size: 15px; font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.14);
+  transition: transform .25s var(--spring), background .2s ease;
+}
+.interlude-cta:hover{ background: #000; transform: translateY(-2px); }
+.interlude-cta svg{ width: 15px; height: 15px; transition: transform .25s var(--ease-ios); }
+.interlude-cta:hover svg{ transform: translateX(3px); }
+@media (max-width: 640px){
+  .interlude{ flex-direction: column; align-items: flex-start; padding: 48px 20px; }
+}
+
 /* ─── Funnel section ────────────────────────────────── */
 .cta-section{
   padding: 120px 24px;
@@ -1135,6 +1170,15 @@ footer{
     </div>
   </div>
 </section>
+
+<!-- ═════ INTERLUDE COPY ═════ -->
+<div class="interlude">
+  <p class="interlude-text">Votre concurrent l'a déjà fait.<br><span class="interlude-grad">Et vous ?</span></p>
+  <a href="#contact" class="interlude-cta">
+    Lancer mon projet
+    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+  </a>
+</div>
 
 <!-- ═════ CTA / FUNNEL ═════ -->
 <section class="cta-section" id="contact">
