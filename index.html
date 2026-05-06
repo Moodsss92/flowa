@@ -438,11 +438,17 @@ section{ padding: 120px 24px; position: relative; }
 /* ─── Solutions (bento grid) ─────────────────────────── */
 .bento{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: 1fr;
   gap: 18px;
   max-width: 1180px; margin: 0 auto;
 }
+/* 5 tiles : 2 grandes (span 3) + 3 égales (span 2) — aucun vide */
+.bento .tile:nth-child(1),
+.bento .tile:nth-child(2){ grid-column: span 3; }
+.bento .tile:nth-child(3),
+.bento .tile:nth-child(4),
+.bento .tile:nth-child(5){ grid-column: span 2; }
 .tile{
   position: relative;
   background: var(--bg-elevated);
@@ -891,6 +897,11 @@ footer{
   .hamburger span::after{ top: 5px; }
 
   .bento{ grid-template-columns: repeat(2,1fr); }
+  .bento .tile:nth-child(1),
+  .bento .tile:nth-child(2),
+  .bento .tile:nth-child(3),
+  .bento .tile:nth-child(4){ grid-column: span 1; }
+  .bento .tile:nth-child(5){ grid-column: span 2; }
   .method-timeline{ grid-template-columns: repeat(2,1fr); row-gap: 48px; }
   .method-timeline::before{ display: none; }
   .results-grid{ grid-template-columns: 1fr; }
@@ -914,6 +925,7 @@ footer{
   .hero-meta .item:nth-last-child(-n+2){ border-bottom: 0; }
   .hero-meta b{ font-size: 26px; }
   .bento{ grid-template-columns: 1fr; }
+  .bento .tile:nth-child(n){ grid-column: span 1; }
   .tile{ padding: 28px 24px; }
   .tile h3{ font-size: 22px; }
   .method-timeline{ grid-template-columns: 1fr; }
