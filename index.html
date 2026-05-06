@@ -908,7 +908,15 @@ footer{
   .cta-card{ grid-template-columns: 1fr; padding: 36px; gap: 32px;}
 }
 @media (max-width: 720px){
-  .hero{ padding: 96px 22px 56px; min-height: auto; }
+  /* ── Nav en bas à la iOS ── */
+  .nav{
+    top: auto;
+    bottom: 14px;
+    bottom: calc(14px + env(safe-area-inset-bottom));
+  }
+  /* Compenser la nav en bas : moins de padding-top hero, padding-bottom body */
+  body{ padding-bottom: 80px; }
+  .hero{ padding: 48px 22px 56px; min-height: auto; }
   .h-display{ font-size: clamp(40px, 10vw, 56px); letter-spacing: -0.035em; }
   .hero-sub{ font-size: 16.5px; max-width: 92%; margin-left: auto; margin-right: auto; min-height: 4.4em; }
   .hero-cta{ flex-direction: column; width: 100%; gap: 10px; }
