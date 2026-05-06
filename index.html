@@ -177,13 +177,15 @@ body{
 .btn-pill{
   display: inline-flex; align-items: center; gap: 6px;
   padding: 9px 16px;
-  background: var(--ink); color: #fff;
+  background: linear-gradient(135deg,#C044D8 0%,#F0468A 100%);
+  color: #fff;
   border-radius: 999px; text-decoration: none;
   font-size: 13.5px; font-weight: 600;
   border: 0; cursor: pointer;
-  transition: transform .25s var(--spring), background .25s ease;
+  box-shadow: 0 6px 20px rgba(192,68,216,0.40);
+  transition: transform .25s var(--spring), box-shadow .25s ease, filter .25s ease;
 }
-.btn-pill:hover{ background: #000; transform: translateY(-1px); }
+.btn-pill:hover{ filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 10px 28px rgba(192,68,216,0.55); }
 .btn-pill svg{ width:14px;height:14px; transition: transform .25s var(--ease-ios); }
 .btn-pill:hover svg{ transform: translateX(2px); }
 
@@ -263,13 +265,14 @@ body{
 .btn-primary{
   display:inline-flex; align-items:center; gap:8px;
   padding: 14px 22px;
-  background: var(--ink); color: #fff;
+  background: linear-gradient(135deg,#C044D8 0%,#F0468A 100%);
+  color: #fff;
   border-radius: 999px; text-decoration: none;
   font-size: 15px; font-weight: 600;
-  box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 10px 24px rgba(0,0,0,0.18);
-  transition: transform .25s var(--spring), box-shadow .25s ease, background .25s ease;
+  box-shadow: 0 8px 28px rgba(192,68,216,0.45);
+  transition: transform .25s var(--spring), box-shadow .25s ease, filter .25s ease;
 }
-.btn-primary:hover{ transform: translateY(-2px) scale(1.02); }
+.btn-primary:hover{ transform: translateY(-2px) scale(1.02); filter: brightness(1.1); box-shadow: 0 14px 36px rgba(192,68,216,0.6); }
 .btn-primary svg{ width:14px;height:14px; transition: transform .25s var(--ease-ios); }
 .btn-primary:hover svg{ transform: translateX(3px); }
 
@@ -643,12 +646,13 @@ section{ padding: 120px 24px; position: relative; }
 /* ─── Interlude copy ─────────────────────────────────── */
 .interlude{
   padding: 64px 24px;
-  display: flex; align-items: center; justify-content: space-between;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center;
   max-width: 1180px; margin: 0 auto;
-  gap: 32px;
+  gap: 28px;
 }
 .interlude-text{
-  font-size: clamp(36px, 4vw, 52px);
+  font-size: clamp(36px, 4vw, 58px);
   font-weight: 800; letter-spacing: -0.04em;
   line-height: 1.1; color: var(--ink);
 }
@@ -658,22 +662,18 @@ section{ padding: 120px 24px; position: relative; }
   -webkit-text-fill-color: transparent;
 }
 .interlude-cta{
-  flex-shrink: 0;
   display: inline-flex; align-items: center; gap: 8px;
-  padding: 16px 28px;
-  background: var(--ink); color: #fff;
+  padding: 16px 32px;
+  background: linear-gradient(135deg,#C044D8 0%,#F0468A 100%);
+  color: #fff;
   border-radius: 999px; text-decoration: none;
   font-size: 15px; font-weight: 700;
-  white-space: nowrap;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.14);
-  transition: transform .25s var(--spring), background .2s ease;
+  box-shadow: 0 10px 30px rgba(192,68,216,0.45);
+  transition: transform .25s var(--spring), filter .25s ease, box-shadow .25s ease;
 }
-.interlude-cta:hover{ background: #000; transform: translateY(-2px); }
+.interlude-cta:hover{ filter: brightness(1.1); transform: translateY(-2px); box-shadow: 0 16px 40px rgba(192,68,216,0.6); }
 .interlude-cta svg{ width: 15px; height: 15px; transition: transform .25s var(--ease-ios); }
 .interlude-cta:hover svg{ transform: translateX(3px); }
-@media (max-width: 640px){
-  .interlude{ flex-direction: column; align-items: flex-start; padding: 48px 20px; }
-}
 
 /* ─── Funnel section ────────────────────────────────── */
 .cta-section{
@@ -945,7 +945,7 @@ footer{
       <button id="lang-en" aria-pressed="false">EN</button>
     </div>
     <a href="#contact" class="btn-pill" data-i18n="nav.cta">
-      <span>Démarrer</span>
+      <span>Demander un devis</span>
       <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
     </a>
     <button class="hamburger" aria-label="Menu"><span></span></button>
@@ -1351,7 +1351,7 @@ emailjs.init('iyhod4iukdkaCdkyc');
 /* ─── i18n ─────────────────────────────────────────── */
 const I18N = {
   fr: {
-    "nav.solutions":"Solutions","nav.method":"Méthode","nav.cases":"Cas d'usage","nav.contact":"Contact","nav.cta":"Démarrer",
+    "nav.solutions":"Solutions","nav.method":"Méthode","nav.cases":"Cas d'usage","nav.contact":"Contact","nav.cta":"Demander un devis",
     "hero.badge":"Studio · Bruxelles",
     "hero.title.1":"Conçu pour","hero.title.2":"convertir.","hero.title.3":"Pensé pour","hero.title.4":"automatiser.",
     "hero.sub":"Des landing pages qui transforment l'attention en action. Des automatisations qui rendent votre temps. Sur-mesure, sans bruit.",
@@ -1400,7 +1400,7 @@ const I18N = {
     "foot.tag":"Bruxelles, sur-mesure.","foot.legal":"Mentions légales","foot.privacy":"Confidentialité"
   },
   en: {
-    "nav.solutions":"Solutions","nav.method":"Method","nav.cases":"Use cases","nav.contact":"Contact","nav.cta":"Start",
+    "nav.solutions":"Solutions","nav.method":"Method","nav.cases":"Use cases","nav.contact":"Contact","nav.cta":"Get a quote",
     "hero.badge":"Studio · Brussels",
     "hero.title.1":"Built to","hero.title.2":"convert.","hero.title.3":"Designed to","hero.title.4":"automate.",
     "hero.sub":"Landing pages that turn attention into action. Automations that hand you back your time. Tailor-made, no noise.",
