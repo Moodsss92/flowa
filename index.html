@@ -855,6 +855,35 @@ footer{
 }
 .reveal-left.in,.reveal-right.in,.reveal-scale.in{ opacity:1; transform:none; }
 
+/* ── Cards : blur + shimmer à l'entrée ── */
+.glow-card.reveal,
+.glow-card.reveal-left,
+.glow-card.reveal-right,
+.glow-card.reveal-scale{
+  filter: blur(10px);
+  transition: opacity 1.2s cubic-bezier(0.16,1,0.3,1),
+              transform 1.2s cubic-bezier(0.16,1,0.3,1),
+              filter  0.95s cubic-bezier(0.16,1,0.3,1);
+}
+.glow-card.in{ filter: blur(0) !important; }
+
+/* Shimmer — span injecté par JS */
+.card-shine{
+  position:absolute; inset:0; border-radius:inherit;
+  pointer-events:none; z-index:20; overflow:hidden;
+  background: linear-gradient(
+    108deg,
+    transparent 20%,
+    rgba(255,255,255,0.22) 50%,
+    transparent 80%
+  );
+  transform: translateX(-110%);
+  animation: cardShine 0.85s 0.25s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes cardShine{
+  to{ transform: translateX(130%); }
+}
+
 /* ─── Cursor-reactive halo on cards ──────────────────── */
 .glow-card{
   position: relative;
@@ -1531,10 +1560,21 @@ document.querySelectorAll('.bento, .method-timeline, .results-grid').forEach(gri
   grid.querySelectorAll(REVEAL_SEL).forEach((el, i) => { el.dataset.delay = i * 130; });
 });
 
+function revealEl(el){
+  el.classList.add('in');
+  // Shimmer sur les cards
+  if(el.classList.contains('glow-card')){
+    const shine = document.createElement('span');
+    shine.className = 'card-shine';
+    el.appendChild(shine);
+    shine.addEventListener('animationend', () => shine.remove(), {once:true});
+  }
+}
+
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if(e.isIntersecting){
-      setTimeout(() => e.target.classList.add('in'), +(e.target.dataset.delay || 0));
+      setTimeout(() => revealEl(e.target), +(e.target.dataset.delay || 0));
       io.unobserve(e.target);
     }
   });
