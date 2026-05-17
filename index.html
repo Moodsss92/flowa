@@ -827,9 +827,27 @@ footer{
 .foot-bot .links{ display: flex; gap: 18px; }
 .foot-bot .links a{ color: var(--ink-3); text-decoration: none; }
 
-/* Reveal on scroll */
-.reveal{ opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease-ios), transform .8s var(--ease-ios); }
-.reveal.in{ opacity: 1; transform: translateY(0); }
+/* ── Reveal on scroll — base ── */
+.reveal{
+  opacity:0;
+  transform: translateY(52px);
+  transition: opacity .75s cubic-bezier(0.22,1,0.36,1),
+              transform .75s cubic-bezier(0.22,1,0.36,1);
+  will-change: opacity, transform;
+}
+.reveal.in{ opacity:1; transform: none; }
+
+/* Direction variants */
+.reveal-left { opacity:0; transform: translateX(-56px);
+  transition: opacity .75s cubic-bezier(0.22,1,0.36,1),
+              transform .75s cubic-bezier(0.22,1,0.36,1); }
+.reveal-right{ opacity:0; transform: translateX(56px);
+  transition: opacity .75s cubic-bezier(0.22,1,0.36,1),
+              transform .75s cubic-bezier(0.22,1,0.36,1); }
+.reveal-scale{ opacity:0; transform: scale(0.88);
+  transition: opacity .7s cubic-bezier(0.22,1,0.36,1),
+              transform .7s cubic-bezier(0.34,1.56,0.64,1); }
+.reveal-left.in,.reveal-right.in,.reveal-scale.in{ opacity:1; transform:none; }
 
 /* ─── Cursor-reactive halo on cards ──────────────────── */
 .glow-card{
@@ -1044,7 +1062,7 @@ footer{
 
 <!-- ═════ SOLUTIONS · BENTO ═════ -->
 <section id="solutions">
-  <div class="section-head reveal">
+  <div class="section-head reveal-left">
     <div class="eyebrow"><span class="dot"></span><span data-i18n="solutions.eyebrow">Solutions</span></div>
     <h2 class="h-section">
       <span data-i18n="solutions.h.1">Deux expertises</span>
@@ -1054,7 +1072,7 @@ footer{
   </div>
 
   <div class="bento">
-    <div class="tile t-large tile-feature reveal glow-card">
+    <div class="tile t-large tile-feature reveal-left glow-card">
       <div>
         <div class="tile-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/></svg></div>
         <h3 data-i18n="tile.lp.t">Landing pages sur-mesure</h3>
@@ -1069,7 +1087,7 @@ footer{
       </div>
     </div>
 
-    <div class="tile t-tall reveal glow-card">
+    <div class="tile t-tall reveal-right glow-card">
       <div>
         <div class="tile-ic" style="background: rgba(255,107,107,0.10);"><svg viewBox="0 0 24 24" stroke="#ff6b6b"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
         <h3 data-i18n="tile.auto.t">Automatisation</h3>
@@ -1078,7 +1096,7 @@ footer{
     </div>
 
 
-    <div class="tile t-default reveal glow-card">
+    <div class="tile t-default reveal-scale glow-card">
       <div>
         <div class="tile-ic"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
         <h3 data-i18n="tile.refonte.t">Refonte</h3>
@@ -1086,7 +1104,7 @@ footer{
       <p data-i18n="tile.refonte.s">Faire passer un site existant au niveau supérieur — design, vitesse, conversion.</p>
     </div>
 
-    <div class="tile t-default reveal glow-card">
+    <div class="tile t-default reveal-scale glow-card">
       <div>
         <div class="tile-ic" style="background: rgba(0,122,255,0.10);"><svg viewBox="0 0 24 24" stroke="#007aff"><path d="M12 2L8 8h8l-4-6z"/><circle cx="12" cy="14" r="6"/><circle cx="9.5" cy="13" r="0.8" fill="#007aff"/><circle cx="14.5" cy="13" r="0.8" fill="#007aff"/></svg></div>
         <h3 data-i18n="tile.ai.t">IA & Chatbots</h3>
@@ -1094,7 +1112,7 @@ footer{
       <p data-i18n="tile.ai.s">Conversations intelligentes, contenu généré, réponses 24/7. L'IA qui travaille pour vous.</p>
     </div>
 
-    <div class="tile t-default reveal glow-card">
+    <div class="tile t-default reveal-scale glow-card">
       <div>
         <div class="tile-ic" style="background: rgba(52,199,89,0.10);"><svg viewBox="0 0 24 24" stroke="#34c759"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
         <h3 data-i18n="tile.nocode.t">SaaS</h3>
@@ -1106,7 +1124,7 @@ footer{
 
 <!-- ═════ MÉTHODE ═════ -->
 <section id="method" style="background: #fff;">
-  <div class="section-head reveal">
+  <div class="section-head reveal-left">
     <div class="eyebrow"><span class="dot"></span><span data-i18n="method.eyebrow">Méthode</span></div>
     <h2 class="h-section">
       <span data-i18n="method.h.1">Quatre étapes</span><br>
@@ -1116,7 +1134,7 @@ footer{
   </div>
 
   <div class="method-timeline">
-    <div class="step-card reveal glow-card">
+    <div class="step-card reveal-left glow-card">
       <div class="step-node">
         <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-6h3v4zM3 19a2 2 0 002 2h1v-6H3v4z"/></svg>
       </div>
@@ -1124,7 +1142,7 @@ footer{
       <h4 data-i18n="method.s1.t">Écouter</h4>
       <p data-i18n="method.s1.s">On comprend votre business avant de proposer la moindre ligne de code.</p>
     </div>
-    <div class="step-card reveal glow-card">
+    <div class="step-card reveal-right glow-card">
       <div class="step-node">
         <svg viewBox="0 0 24 24"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg>
       </div>
@@ -1132,7 +1150,7 @@ footer{
       <h4 data-i18n="method.s2.t">Concevoir</h4>
       <p data-i18n="method.s2.s">Maquettes, copy, parcours. Vous validez chaque étape avant la production.</p>
     </div>
-    <div class="step-card reveal glow-card">
+    <div class="step-card reveal-left glow-card">
       <div class="step-node">
         <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
       </div>
@@ -1140,7 +1158,7 @@ footer{
       <h4 data-i18n="method.s3.t">Construire</h4>
       <p data-i18n="method.s3.s">Code propre, automatisations testées. On livre vite, sans rogner sur la qualité.</p>
     </div>
-    <div class="step-card reveal glow-card">
+    <div class="step-card reveal-right glow-card">
       <div class="step-node">
         <svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/></svg>
       </div>
@@ -1153,7 +1171,7 @@ footer{
 
 <!-- ═════ CAS D'USAGE ═════ -->
 <section id="cases">
-  <div class="section-head reveal">
+  <div class="section-head reveal-left">
     <div class="eyebrow"><span class="dot"></span><span data-i18n="cases.eyebrow">Cas d'usage</span></div>
     <h2 class="h-section">
       <span data-i18n="cases.h.1">Ce qu'on peut</span>
@@ -1162,7 +1180,7 @@ footer{
   </div>
 
   <div class="results-grid">
-    <div class="result reveal glow-card">
+    <div class="result reveal-scale glow-card">
       <span class="tag" data-i18n="cases.1.tag">Landing page</span>
       <h3 data-i18n="cases.1.t">Page de vente, optimisée</h3>
       <p data-i18n="cases.1.s">Une page qui transforme l'attention en action. Responsive, rapide, claire.</p>
@@ -1171,7 +1189,7 @@ footer{
       <div class="stat"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.1.f3">Livraison en quelques jours</span></div>
     </div>
 
-    <div class="result reveal glow-card">
+    <div class="result reveal-scale glow-card">
       <span class="tag" data-i18n="cases.2.tag">Automatisation</span>
       <h3 data-i18n="cases.2.t">Workflows qui travaillent</h3>
       <p data-i18n="cases.2.s">Vos tâches répétitives s'exécutent toutes seules. Vous récupérez vos heures.</p>
@@ -1180,7 +1198,7 @@ footer{
       <div class="stat"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="cases.2.f3">Documentation claire</span></div>
     </div>
 
-    <div class="result reveal glow-card">
+    <div class="result reveal-scale glow-card">
       <span class="tag" data-i18n="cases.3.tag">Système complet</span>
       <h3 data-i18n="cases.3.t">L'écosystème, unifié</h3>
       <p data-i18n="cases.3.s">Site, CRM, outils internes. Tout connecté. Plus de copier-coller.</p>
@@ -1192,7 +1210,7 @@ footer{
 </section>
 
 <!-- ═════ INTERLUDE COPY ═════ -->
-<div class="interlude">
+<div class="interlude reveal-scale">
   <p class="interlude-text">Votre concurrent l'a déjà fait.<br><span class="interlude-grad">Et vous ?</span></p>
   <a href="#contact" class="interlude-cta">
     Lancer mon projet
@@ -1500,19 +1518,57 @@ window.addEventListener('scroll', () => {
 }, {passive:true});
 
 /* ─── Reveal on scroll ────────────────────────────── */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting){
-      e.target.style.transitionDelay = `${(e.target.dataset.delay || (i*60))}ms`;
-      e.target.classList.add('in');
+const REVEAL_SEL = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
+
+// Stagger pour les grilles (tiles, steps, results)
+document.querySelectorAll('.bento, .method-timeline, .results-grid').forEach(grid => {
+  grid.querySelectorAll(REVEAL_SEL).forEach((el, i) => { el.dataset.delay = i * 90; });
+});
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('in'), +(e.target.dataset.delay || 0));
       io.unobserve(e.target);
     }
   });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach((el, i) => {
-  el.dataset.delay = (i % 4) * 80;
-  io.observe(el);
-});
+}, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll(REVEAL_SEL).forEach(el => io.observe(el));
+
+/* ─── Parallax hero ──────────────────────────────── */
+const heroInner = document.querySelector('.hero-inner');
+const heroBg    = document.querySelector('.hero-bg');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if(heroInner) heroInner.style.transform = `translateY(${y * 0.22}px)`;
+  if(heroBg)    heroBg.style.transform    = `translateY(${y * 0.10}px)`;
+}, {passive:true});
+
+/* ─── Count-up animé sur les chiffres clés ──────── */
+function countUp(el){
+  const txt = el.textContent.trim();
+  const num = parseFloat(txt.replace(/[^0-9.]/g,''));
+  if(isNaN(num) || num === 0) return;
+  const prefix = txt.match(/^[+\-]?[^0-9]*/)?.[0]||'';
+  const suffix = txt.replace(/^[+\-]?[0-9.,]+/,'')||'';
+  const dur = 1100, t0 = performance.now();
+  const tick = ts => {
+    const p = Math.min((ts-t0)/dur,1), ease = 1-Math.pow(1-p,3);
+    el.textContent = prefix + (num<10?(num*ease).toFixed(1):Math.round(num*ease)) + suffix;
+    if(p<1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.item b, .stat-num').forEach(countUp);
+      cntObs.unobserve(e.target);
+    }
+  });
+}, {threshold:0.6});
+document.querySelectorAll('.hero-meta, .stats-row').forEach(el => cntObs.observe(el));
 
 /* ─── Funnel ──────────────────────────────────────── */
 const form = document.getElementById('funnelForm');
