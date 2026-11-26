@@ -12,7 +12,10 @@ Pour chaque étape : transaction, chemin SPRO, ce qu'on a fait, valeurs saisies,
 - **+ Nouvelle étape depuis une capture** : glisser-déposer de plusieurs images, sélection de fichiers ou Ctrl/⌘ + V. Claude remplit ensuite les champs vides.
 - Auto-complétion du chemin et du titre à partir du T-code (`lib/tcodes.ts`), numérotation automatique dans le bloc.
 - Fiche détaillée façon Réglages iOS : statut en un clic, lightbox, ajout de captures sans passer par « Modifier », Dupliquer, Copier, Supprimer.
-- Export **Word (.docx)** avec les captures intégrées, et copie du journal en texte.
+- **Exports** (bouton « Exporter ») :
+  - **Dossier complet de l'équipe (Word)** : les fiches de tout le monde, quel que soit l'onglet ouvert, rassemblées dans l'ordre du business case. La première page fait la synthèse : avancement par bloc avec ses contributeurs, contribution de chacun, et « pièces manquantes » (blocs sans étape, étapes pas encore faites). Chaque fiche indique son statut, son responsable, qui l'a rédigée et qui l'a complétée. Les captures sont intégrées (largeur max. 600 px) avec leur légende.
+  - **Captures de l'équipe (ZIP)** : un dossier par bloc (`01 - Company codes et FI/`), un sous-dossier par étape (`1.4 - OBY6 - Paramètres globaux/`), avec les captures numérotées et légendées et un `fiche.txt`. Un `00 - LISEZMOI.txt` résume l'assemblage et contient le journal complet.
+  - **Vue actuelle en Word** et **copie en texte** : seulement l'onglet et les filtres en cours.
 - Synchronisation **temps réel** (Supabase Realtime) et mode sombre automatique.
 
 ## Structure
@@ -29,7 +32,7 @@ sap-journal/
 │   ├── JournalApp.tsx               Orchestration : onglets, split view, collage, exports
 │   ├── StepList.tsx, StepDetail.tsx, StepForm.tsx
 │   ├── NewFromCaptureButton.tsx, AddCapturesZone.tsx, Lightbox.tsx, CaptureImage.tsx
-│   ├── PersonTabs.tsx, WhoAreYouSheet.tsx, HelpBanner.tsx
+│   ├── PersonTabs.tsx, WhoAreYouSheet.tsx, HelpBanner.tsx, ExportSheet.tsx
 │   └── ui/                          SegmentedControl, BottomSheet, Alert, Toast, Badges/Icônes
 ├── hooks/                           useSession, useMembers, useJournal (Realtime), useSignedUrl, useImageDrop
 ├── lib/
@@ -37,7 +40,8 @@ sap-journal/
 │   ├── tcodes.ts                    Dictionnaire T-code → [chemin, titre]
 │   ├── blocs.ts, numbering.ts       Blocs proposés, numérotation automatique
 │   ├── storage.ts, images.ts        Upload, URLs signées, compression des captures
-│   ├── exportDocx.ts, exportText.ts
+│   ├── exportDocx.ts, exportZip.ts, exportText.ts
+│   ├── teamSummary.ts               Assemblage : avancement par bloc, par membre, pièces manquantes
 │   └── supabase/                    Clients navigateur et serveur
 ├── middleware.ts                    Rafraîchit la session et protège les pages
 └── supabase/

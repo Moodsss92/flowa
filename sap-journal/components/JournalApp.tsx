@@ -11,6 +11,7 @@ import { nextNum } from "@/lib/numbering";
 import { copyFiles, uploadCaptures } from "@/lib/storage";
 import { getSupabase } from "@/lib/supabase/client";
 import { EMPTY_FIELDS, STATUT_LABEL, type DraftCapture, type MemberName, type Statut, type Step, type StepFields } from "@/lib/types";
+import { ExportSheet, type ExportKind } from "./ExportSheet";
 import { HelpBanner } from "./HelpBanner";
 import { NewFromCaptureButton } from "./NewFromCaptureButton";
 import { PersonTabs, type Tab } from "./PersonTabs";
@@ -61,6 +62,7 @@ export function JournalApp() {
   const [detailUpload, setDetailUpload] = useState<Progress>(null);
   const [whoOpen, setWhoOpen] = useState(false);
   const [exporting, setExporting] = useState<string | null>(null);
+  const [exportOpen, setExportOpen] = useState(false);
   const [alert, setAlert] = useState<(AlertOptions & { resolve: (ok: boolean) => void }) | null>(null);
   const headerRef = useRef<HTMLElement>(null);
 
@@ -316,24 +318,55 @@ export function JournalApp() {
   // ---------- Exports ----------
   const scopeLabel = tab === "all" ? "Tout le journal" : `Espace de ${tab}`;
 
-  const exportWord = async () => {
-    if (!visible.length) return toast("Aucune étape à exporter.", "error");
+  const today = () => new Date().toISOString().slice(0, 10);
+
+  const exportWord = async (team: boolean) => {
+    const list = team ? steps : visible;
+    if (!list.length) return toast("Aucune étape à exporter.", "error");
     setExporting("Préparation…");
     try {
       const { exportJournalDocx, downloadBlob } = await import("@/lib/exportDocx");
-      const blob = await exportJournalDocx(visible, capturesByStep, {
-        title: "Journal de configuration SAP · Philo Televisions",
-        subtitle: `${scopeLabel} · ${visible.length} étape${visible.length > 1 ? "s" : ""} · exporté le ${new Date().toLocaleDateString("fr-FR")}`,
+      const blob = await exportJournalDocx(list, capturesByStep, {
+        title: team ? "Dossier de configuration SAP · Philo Televisions" : "Journal de configuration SAP · Philo Televisions",
+        subtitle: `${team ? "Équipe Moad, Armel, Mazen, Thomas" : scopeLabel} · ${list.length} étape${list.length > 1 ? "s" : ""} · exporté le ${new Date().toLocaleDateString("fr-FR")}`,
+        team,
+        nameOf,
         onProgress: (d, t) => setExporting(t ? `Captures ${d}/${t}` : "Génération…"),
       });
-      const suffix = tab === "all" ? "equipe" : tab.toLowerCase();
-      downloadBlob(blob, `journal-sap-philo-${suffix}-${new Date().toISOString().slice(0, 10)}.docx`);
-      toast("Document Word exporté", "success");
+      const suffix = team ? "dossier-equipe" : tab === "all" ? "journal" : tab.toLowerCase();
+      downloadBlob(blob, `sap-philo-${suffix}-${today()}.docx`);
+      toast(team ? "Dossier d'équipe exporté" : "Document Word exporté", "success");
     } catch (e) {
       toast(e instanceof Error ? `Export impossible : ${e.message}` : "Export impossible.", "error", 6000);
     } finally {
       setExporting(null);
     }
+  };
+
+  const exportZip = async () => {
+    if (!steps.length) return toast("Aucune étape à exporter.", "error");
+    setExporting("Préparation…");
+    try {
+      const [{ exportCapturesZip }, { downloadBlob }] = await Promise.all([import("@/lib/exportZip"), import("@/lib/exportDocx")]);
+      const { blob, missing } = await exportCapturesZip(steps, capturesByStep, {
+        title: "Captures de configuration SAP · Philo Televisions",
+        onProgress: (d, t) => setExporting(t ? `Captures ${d}/${t}` : "Compression…"),
+      });
+      downloadBlob(blob, `sap-philo-captures-equipe-${today()}.zip`);
+      toast(missing ? `ZIP exporté (${missing} capture${missing > 1 ? "s" : ""} introuvable${missing > 1 ? "s" : ""})` : "Captures exportées en ZIP", missing ? "error" : "success", 5000);
+    } catch (e) {
+      toast(e instanceof Error ? `Export impossible : ${e.message}` : "Export impossible.", "error", 6000);
+    } finally {
+      setExporting(null);
+    }
+  };
+
+  const runExport = (k: ExportKind) => {
+    setExportOpen(false);
+    if (k === "team-docx") exportWord(true);
+    else if (k === "team-zip") exportZip();
+    else if (k === "view-docx") exportWord(false);
+    else copyJournal();
   };
 
   const copyJournal = async () => {
@@ -385,9 +418,9 @@ export function JournalApp() {
               />
             </div>
             <div className="flex shrink-0 items-center gap-0.5">
-              <button type="button" onClick={exportWord} disabled={!!exporting} aria-label="Exporter en Word" className="btn-plain px-2 text-[15px]">
+              <button type="button" onClick={() => setExportOpen(true)} disabled={!!exporting} aria-label="Exporter" className="btn-plain px-2 text-[15px]">
                 <Icon name="doc" className="h-[18px] w-[18px]" />
-                <span className={exporting ? "" : "hidden sm:inline"}>{exporting ?? "Exporter en Word"}</span>
+                <span className={exporting ? "" : "hidden sm:inline"}>{exporting ?? "Exporter"}</span>
               </button>
               <button type="button" onClick={copyJournal} aria-label="Copier en texte" className="btn-plain px-2 text-[15px]">
                 <Icon name="copy" className="h-[18px] w-[18px]" />
@@ -507,6 +540,15 @@ export function JournalApp() {
           toast(`Tu es maintenant ${n}`, "success");
         }}
         onClose={() => setWhoOpen(false)}
+      />
+      <ExportSheet
+        open={exportOpen}
+        onClose={() => setExportOpen(false)}
+        onExport={runExport}
+        teamCount={steps.length}
+        teamCaptures={journal.captures.length}
+        viewCount={visible.length}
+        scopeLabel={scopeLabel}
       />
       <Alert options={alert} onCancel={() => closeAlert(false)} onConfirm={() => closeAlert(true)} />
     </div>
