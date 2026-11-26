@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Couleurs système iOS (valeurs RGB pour Tailwind <alpha-value>) */
+:root {
+  color-scheme: light;
+  --bg: 242 242 247;       /* #F2F2F7 fond groupé */
+  --card: 255 255 255;     /* cartes */
+  --card2: 242 242 247;    /* champs dans une carte */
+  --label: 0 0 0;
+  --label2: 60 60 67;      /* secondaire (utilisé avec opacité) */
+  --label3: 142 142 147;   /* #8E8E93 */
+  --sep: 198 198 200;      /* #C6C6C8 */
+  --fill: 118 118 128;     /* remplissage segmented control (≈ 12 %) */
+  --blue: 0 122 255;       /* #007AFF */
+  --green: 52 199 89;      /* #34C759 */
+  --red: 255 59 48;        /* #FF3B30 */
+  --orange: 255 149 0;
+  --gray: 142 142 147;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: 0 0 0;
+    --card: 28 28 30;      /* #1C1C1E */
+    --card2: 44 44 46;     /* #2C2C2E */
+    --label: 255 255 255;
+    --label2: 235 235 245;
+    --label3: 142 142 147;
+    --sep: 56 56 58;       /* #38383A */
+    --fill: 118 118 128;
+    --blue: 10 132 255;    /* #0A84FF */
+    --green: 48 209 88;
+    --red: 255 69 58;
+    --orange: 255 159 10;
+    --gray: 142 142 147;
+  }
+}
+
+html,
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--label));
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-size: 17px;
+  line-height: 1.35;
+}
+
+/* Focus visible (accessibilité clavier) */
+:focus-visible {
+  outline: 3px solid rgb(var(--blue) / 0.55);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+@layer components {
+  .card {
+    @apply rounded-ios bg-card;
+  }
+  .hairline-b {
+    box-shadow: inset 0 -0.5px 0 rgb(var(--sep));
+  }
+  .hairline-t {
+    box-shadow: inset 0 0.5px 0 rgb(var(--sep));
+  }
+  .ios-input {
+    @apply w-full rounded-[10px] bg-card2 px-3 py-[11px] text-[17px] text-label placeholder:text-label3 outline-none transition;
+  }
+  .ios-input:focus {
+    box-shadow: 0 0 0 2px rgb(var(--blue) / 0.6);
+  }
+  .btn {
+    @apply inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-[12px] px-4 text-[16px] font-semibold transition active:scale-[0.98] disabled:opacity-40 disabled:active:scale-100;
+  }
+  .btn-blue {
+    @apply btn bg-blue text-white;
+  }
+  .btn-tinted {
+    @apply btn bg-blue/10 text-blue;
+  }
+  .btn-plain {
+    @apply btn bg-transparent px-2 font-normal text-blue;
+  }
+  .btn-danger {
+    @apply btn bg-red/10 text-red;
+  }
+  .section-title {
+    @apply px-4 pb-1.5 text-[13px] uppercase tracking-wide text-label3;
+  }
+  .glass {
+    background: rgb(var(--bg) / 0.78);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    backdrop-filter: saturate(180%) blur(20px);
+  }
+}
+
+/* Séparateurs fins des listes groupées : inset à gauche comme iOS */
+.inset-list > * + * {
+  position: relative;
+}
+.inset-list > * + *::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 16px;
+  right: 0;
+  height: 0.5px;
+  background: rgb(var(--sep));
+}
+
+@keyframes sheet-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pop-in {
+  from { opacity: 0; transform: scale(1.12); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, -12px) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+.anim-sheet { animation: sheet-up 0.32s cubic-bezier(0.32, 0.72, 0, 1); }
+.anim-fade { animation: fade-in 0.2s ease-out; }
+.anim-pop { animation: pop-in 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2); }
+.anim-toast { animation: toast-in 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-sheet, .anim-fade, .anim-pop, .anim-toast { animation: none; }
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+}

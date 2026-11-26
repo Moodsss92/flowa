@@ -5,6 +5,8 @@ iOS 17+ aesthetic · Bilingue FR/EN · Responsive · Animé · Supabase + EmailJ
 
 ---
 
+> 📒 **Nouveau :** le dossier [`sap-journal/`](sap-journal/README.md) contient le journal de configuration SAP partagé (Next.js + Supabase + Claude), indépendant du site vitrine.
+
 ## Stack
 
 | Couche | Technologie |
